@@ -9,6 +9,7 @@
     "delBuild": "rd build",
     "say": "echo Hello World!"
   },
+  
   "author": "",
   "license": "ISC"
 }
