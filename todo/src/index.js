@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { myTag } from './App';
+import App from './App';
 
-ReactDOM.render(myTag, document.getElementById('root'));
+ReactDOM.render( <App />, document.getElementById('root'));
 
