@@ -1,5 +1,10 @@
-.todo-list {
+.todo {
   margin: auto;
   width: 300px;
   font-family: 'Indie Flower', cursive;
+}
+
+.title {
+  color: blue;
+  font-weight: bolder;
 }
