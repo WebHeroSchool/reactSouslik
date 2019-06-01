@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import ItemList from '../ItemList/ItemList';
 import InputItem from '../InputItem/InputItem';
 import Footer from '../Footer/Footer';
-import './App.css'; //стили подключаются в своем компоненте
+import styles from './App.module.css'; //модуль-стили подключаются в своем компоненте
 
 const App = () => {
 
@@ -16,8 +16,8 @@ const App = () => {
   
 
   return (
-    <div className="todo-list">
-      <h1>Список дел</h1>
+    <div className={ styles.todo }>
+      <h1 className={ styles.title }>Список дел</h1>
       <InputItem />
       <ItemList items = { items } />
       <Footer />
