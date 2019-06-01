@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import ItemList from '../ItemList/ItemList';
 import InputItem from '../InputItem/InputItem';
 import Footer from '../Footer/Footer';
+import './App.css'; //стили подключаются в своем компоненте
 
 const App = () => {
 
@@ -15,7 +16,7 @@ const App = () => {
   
 
   return (
-    <div>
+    <div className="todo-list">
       <h1>Список дел</h1>
       <InputItem />
       <ItemList items = { items } />
