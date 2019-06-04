@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@material-ui/core": "^4.0.2",
     "classnames": "^2.2.6"
   }
 }
