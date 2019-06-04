@@ -5,9 +5,9 @@ import InputItem from '../InputItem/InputItem';
 import Footer from '../Footer/Footer';
 import styles from './App.module.css'; //модуль-стили подключаются в своем компоненте
 
-const App = () => {
+const App= () => {
 
-  const items = [
+  const items= [
     { 
       value : 'проснуться',
       isDone: true
@@ -26,14 +26,14 @@ const App = () => {
     }
   ];
 
-  let count = false;
+  let isMany= false;
 
   return (
-    <div className = { styles.todo }>
-      <h1 className = { styles.title }>Список дел</h1>
+    <div className= { styles.todo }>
+      <h1 className= { styles.title }>Список дел</h1>
       <InputItem />
-      <ItemList items = { items } />
-      <Footer count={count} />
+      <ItemList items= { items } />
+      <Footer count= {isMany} />
     </div>
   );
 } 

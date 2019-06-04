@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom';
 import Item from '../Item/Item';
 import Checkbox from '@material-ui/core/Checkbox';
 
-const ItemList = ({ items }) => ( <ul>
+const ItemList= ({ items }) => ( <ul>
   { items.map( item => (
-    <li key = { item.value }>
-      <Item value = { item.value } isDone = { item.isDone } />
+    <li key= { item.value }>
+      <Item value= { item.value } isDone= { item.isDone } />
 
       <Checkbox
         value="checked"
