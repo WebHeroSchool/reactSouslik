@@ -33,7 +33,7 @@ const App= () => {
       <h1 className= { styles.title }>Список дел</h1>
       <InputItem />
       <ItemList items= { items } />
-      <Footer count= {isMany} />
+      <Footer count= { isMany } />
     </div>
   );
 } 
