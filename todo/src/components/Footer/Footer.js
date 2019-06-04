@@ -2,15 +2,13 @@ import React from 'react';
 import classnames from 'classnames';
 import styles from './Footer.module.css';
 
-
-const Count = ({count}) => (<span className = {
+const Count= ({isMany}) => (<span className = {
   classnames({
     [styles.count]: true,
-    [styles.isMany]: count
+    [styles.isMany]: isMany
   })
 }>5</span>);
 
-
-const Footer = ({count}) => ( <footer >Незаконченных дел: <Count count={count} /></footer> );
+const Footer= ({isMany}) => ( <footer >Незаконченных дел: <Count isMany= {isMany} /></footer> );
 
 export default Footer;
