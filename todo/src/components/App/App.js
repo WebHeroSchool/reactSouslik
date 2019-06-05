@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import ItemList from '../ItemList/ItemList';
 import InputItem from '../InputItem/InputItem';
 import Footer from '../Footer/Footer';
@@ -26,7 +25,7 @@ class App extends React.Component {
       }
     ];
   
-    let isMany= false;
+    let isMany=false;
   
     return (
       <div className={ styles.todo }>
