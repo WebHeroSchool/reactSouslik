@@ -1,8 +1,8 @@
 .item {
-  color: blue;
+  font-weight: 500;
 }
 
 .done {
   text-decoration: line-through;
-  color: red;
+  color: #f50057;
 }

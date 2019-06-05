@@ -7,7 +7,7 @@ import styles from './App.module.css'; //модуль-стили подключ�
 
 const App= () => {
 
-  const items= [
+  const items=[
     { 
       value : 'проснуться',
       isDone: true
@@ -29,11 +29,11 @@ const App= () => {
   let isMany= false;
 
   return (
-    <div className= { styles.todo }>
-      <h1 className= { styles.title }>Список дел</h1>
+    <div className={ styles.todo }>
+      <h1 className={ styles.title }>Список дел</h1>
       <InputItem />
-      <ItemList items= { items } />
-      <Footer count= { isMany } />
+      <ItemList items={ items } />
+      <Footer count={ isMany } />
     </div>
   );
 } 

@@ -1,0 +1,11 @@
+.list {
+  font-weight: bold;
+  list-style: none;
+  padding: 0 10px;
+  
+}
+
+.listItem {
+  display: flex;
+  justify-content: space-between;
+}
