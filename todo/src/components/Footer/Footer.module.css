@@ -1,0 +1,10 @@
+.count {
+  color: green;
+  font-weight: 700;
+}
+
+.isMany {
+  color: red;
+  font-weight: 900;
+  font-style: italic;
+}
