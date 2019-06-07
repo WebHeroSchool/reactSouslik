@@ -8,6 +8,7 @@ const InputItem = () => (<div>
     margin="dense"
     fullWidth
   />
-</div>);
+
+</div> );
 
 export default InputItem;

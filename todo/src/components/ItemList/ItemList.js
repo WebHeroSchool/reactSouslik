@@ -14,8 +14,7 @@ const ItemList=({ items }) => ( <ul className={ styles.list }>
           }}
         />
         <Item value={ item.value } isDone={ item.isDone } />
-      </div>      
-
+      </div>
       <Checkbox
         value="checkedF"
         indeterminate
