@@ -3,34 +3,44 @@ import ItemList from '../ItemList/ItemList';
 import InputItem from '../InputItem/InputItem';
 import Footer from '../Footer/Footer';
 import styles from './App.module.css';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 
 class App extends React.Component {
-  render() {
-    const items = [
+  state = {
+    items: [
       {
         value: 'проснуться',
-        isDone: true,
+        isDone: true
       },
       {
         value: 'побриться',
-        isDone: false,
+        isDone: false
       },
       {
         value: 'наступить на кота',
-        isDone: true,
+        isDone: true
       },
       {
         value: 'с женой поругаться',
-        isDone: false,
-      },
-    ];
+        isDone: false
+      }
+    ]
+  };
+
+  render() {
     let isMany = false;
+
     return (
       <div className={styles.todo}>
-        <h1 className={styles.title}>Список дел</h1>
-        <InputItem />
-        <ItemList items={items} />
-        <Footer count={isMany} />
+        <Card>
+          <CardContent>
+            <h1 className={styles.title}>Список дел</h1>
+            <InputItem />
+            <ItemList items={this.state.items} />
+            <Footer count={isMany} />
+          </CardContent>
+        </Card>
       </div>
     );
   }
