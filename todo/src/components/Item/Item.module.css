@@ -2,6 +2,12 @@
   font-weight: 500;
 }
 
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .done {
   text-decoration: line-through;
   color: #f50057;

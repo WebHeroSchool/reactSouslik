@@ -46,10 +46,22 @@ class App extends React.Component {
       return newItem;//возвращаем новый список
     });
 
-    this.setState({ items: newItemList });//
+    this.setState({ items: newItemList });
   };
 
-  onClickFooter = () => this.setState((state, props) => ({ count: state.count - 1 }));
+  onClickDelete = (id) => {
+    const newItemList = this.state.items.filter(item => {//проверяю, если id !=, то добавляю в новый список
+      if (item.id !== id) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+
+    this.setState({ items: newItemList });
+  };
+ 
+  onClickFooter = () => this.setState((state) => ({ count: state.count - 1 }));//test
 
   render() {
     let isMany = false;
@@ -60,7 +72,11 @@ class App extends React.Component {
           <CardContent>
             <h1 className={styles.title}>Список дел</h1>
             <InputItem />
-            <ItemList items={this.state.items} onClickDone={this.onClickDone} />
+            <ItemList
+              items={this.state.items}
+              onClickDone={this.onClickDone}
+              onClickDelete={this.onClickDelete}
+            />
             <Footer count={this.state.count} onClickFooter={this.onClickFooter} />
           </CardContent>
         </Card>
