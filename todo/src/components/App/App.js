@@ -11,32 +11,45 @@ class App extends React.Component {
     items: [
       {
         value: 'проснуться',
-        isDone: true
+        isDone: false,
+        id: 1
       },
       {
         value: 'побриться',
-        isDone: false
+        isDone: false,
+        id: 2
       },
       {
         value: 'наступить на кота',
-        isDone: true
+        isDone: false,
+        id: 3
       },
       {
         value: 'с женой поругаться',
-        isDone: false
+        isDone: false,
+        id: 4
       }
-    ]
+    ],
+
+    count: 6
   };
 
-  constructor (props) {
-    super(props);
+  onClickDone = id => {//создаем образотчик события
+    const newItemList = this.state.items.map(item => {//перебираем текущее состояние элементов
+      const newItem = { ...item };//изменяем наш объект
+      if (item.id === id) {//проверяем, что это именно тот элемент, на который кликнули
+        console.log( item.id);
+        newItem.isDone = !item.isDone;//переписываем состояние 
+        console.log(newItem.isDone);
+      }
 
-    this.onClickDone = this.onClickDone.bind(this);//контекстная привязка(bind), что бы нигде не терялся контекст
-  }
+      return newItem;//возвращаем новый список
+    });
 
-  onClickDone(isDone) {//create event handler (обработчик событий)
-    console.log(isDone);
-  }
+    this.setState({ items: newItemList });//
+  };
+
+  onClickFooter = () => this.setState((state, props) => ({ count: state.count - 1 }));
 
   render() {
     let isMany = false;
@@ -48,7 +61,7 @@ class App extends React.Component {
             <h1 className={styles.title}>Список дел</h1>
             <InputItem />
             <ItemList items={this.state.items} onClickDone={this.onClickDone} />
-            <Footer count={isMany} />
+            <Footer count={this.state.count} onClickFooter={this.onClickFooter} />
           </CardContent>
         </Card>
       </div>
