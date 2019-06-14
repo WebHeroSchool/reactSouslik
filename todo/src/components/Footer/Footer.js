@@ -9,6 +9,6 @@ const Count = ({ isMany }) => (<span className={
   })
 }>5</span>);
 
-const Footer=({ isMany}) => ( <footer>Незаконченных дел: <Count isMany={ isMany } /></footer> );
+const Footer = ({isMany}) => ( <footer>Незаконченных дел: <Count isMany={isMany} /></footer> );
 
 export default Footer;
