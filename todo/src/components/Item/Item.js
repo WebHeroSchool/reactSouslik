@@ -1,5 +1,6 @@
-import React from 'react';
 import classnames from 'classnames';
+import React from 'react';
+import styles from './Item.module.css';
 import styles from'./Item.module.css';
 
 const Item=({ value, isDone }) => ( <span className= {
