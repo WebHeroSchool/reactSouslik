@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "mkdir build",
     "delBuild": "rd build",
+    "start": "npm start",
     "say": "echo Hello World!"
   },
   "author": "",
