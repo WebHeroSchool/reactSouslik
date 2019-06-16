@@ -31,10 +31,10 @@ class App extends React.Component {
   constructor (props) {
     super(props);
 
-    this.onClickDone = this.onClickDone.bind(this);//контекстная привязка(bind), что бы нигде не терялся контекст
+    this.onClickDone = this.onClickDone.bind(this);
   }
 
-  onClickDone(isDone) {//create event handler (обработчик событий)
+  onClickDone(isDone) {
     console.log(isDone);
   }
 
