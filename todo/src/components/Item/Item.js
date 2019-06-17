@@ -3,12 +3,12 @@ import React from 'react';
 import styles from './Item.module.css';
 import Checkbox from '@material-ui/core/Checkbox';
 
-const Item = ({ value, isDone, onClickDone }) => (
+const Item = ({ value, isDone, onClickDone, id }) => (
     <div>
         <Checkbox
             checked={isDone}
             tabIndex={-1}
-            onClick={() => onClickDone(isDone)}
+            onClick={() => onClickDone(id)}
         />
         <span className={
             classnames({
