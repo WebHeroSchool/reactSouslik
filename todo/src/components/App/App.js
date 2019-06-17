@@ -28,6 +28,16 @@ class App extends React.Component {
     ]
   };
 
+  constructor (props) {
+    super(props);
+
+    this.onClickDone = this.onClickDone.bind(this);
+  }
+
+  onClickDone(isDone) {
+    console.log(isDone);
+  }
+
   render() {
     let isMany = false;
 
@@ -37,7 +47,7 @@ class App extends React.Component {
           <CardContent>
             <h1 className={styles.title}>Список дел</h1>
             <InputItem />
-            <ItemList items={this.state.items} />
+            <ItemList items={this.state.items} onClickDone={this.onClickDone} />
             <Footer count={isMany} />
           </CardContent>
         </Card>
