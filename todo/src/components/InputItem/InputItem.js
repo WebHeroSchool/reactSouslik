@@ -11,10 +11,6 @@ class InputItem extends React.Component {
   };
 
   onClickClearField = () => {
-    this.setState({
-      inputValue: ''
-    });
-
     if (this.state.inputValue === '') {
       this.setState({
         error: true,
@@ -23,7 +19,8 @@ class InputItem extends React.Component {
     } else {      
       this.setState({
         error: false,
-        label: 'Добавить задание'
+        label: 'Добавить задание',
+        inputValue: ''
       });
       this.props.onClickAdd(this.state.inputValue.toUpperCase());
     }
