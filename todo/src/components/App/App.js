@@ -11,35 +11,53 @@ class App extends React.Component {
     items: [
       {
         value: 'проснуться',
-        isDone: true
+        isDone: false,
+        id: 1
       },
       {
         value: 'побриться',
-        isDone: false
+        isDone: false,
+        id: 2
       },
       {
         value: 'наступить на кота',
-        isDone: true
+        isDone: false,
+        id: 3
       },
       {
         value: 'с женой поругаться',
-        isDone: false
+        isDone: false,
+        id: 4
       }
     ]
   };
 
-  constructor (props) {
-    super(props);
+  onClickDone = id => {
+    const newItemList = this.state.items.map( item => {
+      const newItem = {...item };
 
-    this.onClickDone = this.onClickDone.bind(this);
-  }
+      if (item.id === id) {
+        newItem.isDone = !item.isDone;
 
-  onClickDone(isDone) {
-    console.log(isDone);
-  }
+      }
+
+      return newItem;
+    });
+
+    this.setState({ items: newItemList });
+  };
+
+  onClickDelete = id => {
+    const newItemList = this.state.items.filter( item => {      
+
+      return item.id !==id;
+    });
+
+    this.setState({ items: newItemList });
+  };
+  
 
   render() {
-    let isMany = false;
 
     return (
       <div className={styles.todo}>
@@ -47,8 +65,12 @@ class App extends React.Component {
           <CardContent>
             <h1 className={styles.title}>Список дел</h1>
             <InputItem />
-            <ItemList items={this.state.items} onClickDone={this.onClickDone} />
-            <Footer count={isMany} />
+            <ItemList
+              items={this.state.items}
+              onClickDone={this.onClickDone}
+              onClickDelete={this.onClickDelete}
+            />
+            <Footer count={this.state.items.length} />
           </CardContent>
         </Card>
       </div>
