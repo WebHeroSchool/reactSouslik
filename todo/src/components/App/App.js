@@ -5,6 +5,7 @@ import Footer from '../Footer/Footer';
 import styles from './App.module.css';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import PropTypes, { func }  from 'prop-types';
 
 class App extends React.Component {
   state = {
@@ -90,4 +91,14 @@ class App extends React.Component {
     );
   }
 }
+
+App.propTypes = {
+  items: PropTypes.object,
+  value: PropTypes.string,
+  isDone: PropTypes.bool,
+  onClickDone: PropTypes.func,
+  onClickDelete: PropTypes.func,
+  onClickAdd: PropTypes.func
+}
+
 export default App;
