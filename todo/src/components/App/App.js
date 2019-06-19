@@ -29,7 +29,8 @@ class App extends React.Component {
         isDone: false,
         id: 4
       }
-    ]
+    ],
+    count: 4
   };
 
   onClickDone = id => {
@@ -38,7 +39,6 @@ class App extends React.Component {
 
       if (item.id === id) {
         newItem.isDone = !item.isDone;
-
       }
 
       return newItem;
@@ -48,14 +48,27 @@ class App extends React.Component {
   };
 
   onClickDelete = id => {
-    const newItemList = this.state.items.filter( item => {      
+    const newCount = this.state.count - 1,
+      newItemList = this.state.items.filter( item => {      
 
-      return item.id !==id;
-    });
+        return item.id !==id;
+    });    
 
-    this.setState({ items: newItemList });
+    this.setState({ count: newCount });
+    this.setState({ items: newItemList });    
   };
-  
+
+  onClickAdd = (value) => this.setState(state => ({
+    items: [
+      ...state.items,
+      {
+        value,
+        isDone: false,
+        id: state.count + 1
+      }
+    ],
+     count: state.count + 1
+  }));  
 
   render() {
 
@@ -64,7 +77,7 @@ class App extends React.Component {
         <Card>
           <CardContent>
             <h1 className={styles.title}>Список дел</h1>
-            <InputItem />
+            <InputItem onClickAdd={this.onClickAdd} />
             <ItemList
               items={this.state.items}
               onClickDone={this.onClickDone}

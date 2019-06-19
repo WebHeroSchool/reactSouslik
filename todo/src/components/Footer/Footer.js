@@ -3,10 +3,10 @@ import classnames from 'classnames';
 import styles from './Footer.module.css';
 
 
-const TodoCount = ({count}) => (<span className={
+const TodoCount = ({ count }) => (<span className={
   classnames({
     [styles.count]: true,
-    [styles.isMany]: (count < 5)
+    [styles.isMany]: count < 5
   })
 }>{count}</span>);
 
