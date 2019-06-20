@@ -4,6 +4,10 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
 class InputItem extends React.Component {
+  componentDidMount() {
+    console.log("смонтировано поле ввода");
+  }
+
   state = {
     error: false,
     label: 'Добавить задание',
