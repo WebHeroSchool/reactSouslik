@@ -3,14 +3,25 @@ import classnames from 'classnames';
 import styles from './Footer.module.css';
 import PropTypes from 'prop-types';
 
+const date = new Date;
+class Footer extends React.Component {
+  componentDidMount() {
+    console.log(`${date.getHours()}:${date.getMinutes()} Монтирование компонента Footer`);
+  }
+
+  render() {
+    const {count} = this.props;
+
+    return (<footer>Незаконченных дел: <TodoCount count={count} /></footer>)
+  }
+}
+
 const TodoCount = ({ count }) => (<span className={
   classnames({
     [styles.count]: true,
     [styles.isMany]: count < 5
   })
 }>{count}</span>);
-
-const Footer = ({ count }) => (<footer>Незаконченных дел: <TodoCount count={count} /></footer>);
 
 Footer.defaultProps = {
   count: 0
