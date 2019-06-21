@@ -2,40 +2,54 @@ import classnames from 'classnames';
 import React from 'react';
 import styles from './Item.module.css';
 import Checkbox from '@material-ui/core/Checkbox';
-import PropTypes from 'prop-types';
 
-const Item = ({ value, isDone, onClickDone, onClickDelete, id }) => (
-    <div className={styles.wrapper}>
+let date = new Date();
+class Item extends React.Component {
+  componentDidMount() {
+    console.log(`${date.getHours()}:${date.getMinutes()} Монтирование компонента "${this.props.value}"`);
+  }
+  componentDidUpdate() {
+    console.log("обновление задач");
+  }
+  componentWillUnmount() {
+    console.log(`${date.getHours()}:${date.getMinutes()} Демонтирование компонента "${this.props.value}"`);
+  }
+  componentWillUpdate() {
+    console.log("обновление списка");
+  }
+  componentDidCatch() {
+    console.log("Error при рендере");
+  }
+
+  render() {
+    const { value, isDone, onClickDone, onClickDelete, id } = this.props;
+
+    return (
+      <div className={styles.wrapper}>
         <div>
-            <Checkbox
-                checked={isDone}
-                tabIndex={-1}
-                onClick={() => onClickDone(id)}
-            />
-            <span className={
-                classnames({
-                    [styles.item]: true,
-                    [styles.done]: isDone
-                })
-            }>{value}</span>
+          <Checkbox
+            checked={isDone}
+            tabIndex={-1}
+            onClick={() => onClickDone(id)}
+          />
+          <span className={
+            classnames({
+              [styles.item]: true,
+              [styles.done]: isDone
+            })
+          }>{value}</span>
         </div>
         <Checkbox
-            value="checkedF"
-            indeterminate
-            inputProps={{
+          value="checkedF"
+          indeterminate
+          inputProps={{
             'aria-label': 'indeterminate checkbox'
-            }}
-            onClick={() => onClickDelete(id)}
+          }}
+          onClick={() => onClickDelete(id)}
         />
-    </div>
-);
-
-Item.defaultProps = {
-    isDone: false
-};
-
-Item.propTypes = {
-    id: PropTypes.number.isRequired
+      </div>
+    )
+  }
 }
 
 export default Item;
