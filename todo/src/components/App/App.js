@@ -1,93 +1,39 @@
 import React from 'react';
-import ItemList from '../ItemList/ItemList';
-import InputItem from '../InputItem/InputItem';
-import Footer from '../Footer/Footer';
-import styles from './App.module.css';
+
 import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import PropTypes, { func }  from 'prop-types';
+import MenuItem from '@material-ui/core/MenuItem';
+import MenuList from '@material-ui/core/MenuList';
+
+import Todo from '../Todo/Todo';
+import About from '../About/About';
+import Contacts from '../Contacts/Contacts';
+
+import styles from './App.module.css';
+import PropTypes  from 'prop-types';
+
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 class App extends React.Component {
-  state = {
-    items: [
-      {
-        value: 'проснуться',
-        isDone: false,
-        id: 1
-      },
-      {
-        value: 'побриться',
-        isDone: false,
-        id: 2
-      },
-      {
-        value: 'наступить на кота',
-        isDone: false,
-        id: 3
-      },
-      {
-        value: 'с женой поругаться',
-        isDone: false,
-        id: 4
-      }
-    ],
-    count: 4
-  };
-
-  onClickDone = id => {
-    const newItemList = this.state.items.map( item => {
-      const newItem = {...item };
-
-      if (item.id === id) {
-        newItem.isDone = !item.isDone;
-      }
-
-      return newItem;
-    });
-
-    this.setState({ items: newItemList });
-  };
-
-  onClickDelete = id => {
-    const newCount = this.state.count - 1,
-      newItemList = this.state.items.filter( item => {      
-
-        return item.id !==id;
-    });    
-
-    this.setState({ count: newCount });
-    this.setState({ items: newItemList });    
-  };
-
-  onClickAdd = (value) => this.setState(state => ({
-    items: [
-      ...state.items,
-      {
-        value,
-        isDone: false,
-        id: state.count + 1
-      }
-    ],
-     count: state.count + 1
-  }));  
 
   render() {
 
-    return (
-      <div className={styles.todo}>
-        <Card>
-          <CardContent>
-            <h1 className={styles.title}>Список дел</h1>
-            <InputItem onClickAdd={this.onClickAdd} />
-            <ItemList
-              items={this.state.items}
-              onClickDone={this.onClickDone}
-              onClickDelete={this.onClickDelete}
-            />
-            <Footer count={this.state.items.length} />
-          </CardContent>
-        </Card>
-      </div>
+    return(
+      <Router>
+        <div className={styles.App}>
+          <Card classNames={styles.sidebar}>
+            <MenuList>
+              <Link to='/' className={styles.link}><MenuItem>About</MenuItem></Link>
+              <Link to='/todo' className={styles.link}><MenuItem>ToDo</MenuItem></Link>
+              <Link to='/contacts' className={styles.link}><MenuItem>Contacts</MenuItem></Link>
+            </MenuList>
+          </Card>
+          <Card className={styles.content}>
+            <Route path='/' exact component={About} />
+            <Route path='/todo' component={Todo} />
+            <Route path='/contacts' component={Contacts} />
+          </Card>
+        </div>
+      </Router>
     );
   }
 }
