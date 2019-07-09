@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import styles from './Footer.module.css';
 import PropTypes from 'prop-types';
 
-const date = new Date;
+const date = new Date();
 class Footer extends React.Component {
   componentDidMount() {
     console.log(`${date.getHours()}:${date.getMinutes()} Монтирование компонента Footer`);
