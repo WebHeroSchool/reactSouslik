@@ -57,8 +57,7 @@ class Todo extends React.Component {
         return item.id !==id;
     });    
 
-    this.setState({ count: newCount });
-    this.setState({ items: newItemList });    
+    this.setState({ count: newCount, items: newItemList }); 
   };
 
   onClickAdd = (value) => this.setState(state => ({
