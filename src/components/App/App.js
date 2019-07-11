@@ -20,7 +20,7 @@ class App extends React.Component {
     return(
       <Router>
         <div className={styles.App}>
-          <Card classNames={styles.sidebar}>
+          <Card className={styles.sidebar}>
             <MenuList>
               <Link to='/' className={styles.link}><MenuItem>About</MenuItem></Link>
               <Link to='/todo' className={styles.link}><MenuItem>ToDo</MenuItem></Link>
