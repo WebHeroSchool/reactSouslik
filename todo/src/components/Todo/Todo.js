@@ -7,8 +7,6 @@ import Footer from '../Footer/Footer';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 
-
-
 class Todo extends React.Component {
   state = {
     items: [
