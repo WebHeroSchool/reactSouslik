@@ -1,17 +1,35 @@
 {
   "name": "todo",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "mkdir build",
-    "delBuild": "rd build",
-    "start": "npm start",
-    "say": "echo Hello World!"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
-  "author": "",
-  "license": "ISC",
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "dependencies": {
+    "@octokit/rest": "^16.28.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "3.0.1"
+  },
   "devDependencies": {
     "@material-ui/core": "^4.0.2",
     "classnames": "^2.2.6",
@@ -21,8 +39,5 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.13.0",
     "prop-types": "^15.7.2"
-  },
-  "dependencies": {
-    "react-router-dom": "^5.0.1"
   }
 }

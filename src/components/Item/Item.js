@@ -7,7 +7,7 @@ let date = new Date();
 class Item extends React.Component {
   componentDidMount() {
     this.idInterval = setInterval( () => {
-      let d = new Date;
+      let d = new Date();
       console.log(d.getSeconds());
     },1000)
     console.log(`${date.getHours()}:${date.getMinutes()} Монтирование компонента "${this.props.value}"`);

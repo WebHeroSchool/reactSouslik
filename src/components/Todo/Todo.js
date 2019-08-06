@@ -7,8 +7,6 @@ import Footer from '../Footer/Footer';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 
-
-
 class Todo extends React.Component {
   state = {
     items: [
@@ -57,8 +55,7 @@ class Todo extends React.Component {
         return item.id !==id;
     });    
 
-    this.setState({ count: newCount });
-    this.setState({ items: newItemList });    
+    this.setState({ count: newCount, items: newItemList }); 
   };
 
   onClickAdd = (value) => this.setState(state => ({
