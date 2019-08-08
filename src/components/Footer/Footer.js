@@ -10,21 +10,27 @@ class Footer extends React.Component {
   }
 
   render() {
-    const {count} = this.props;
+    const {countAll} = this.props;
+    const {countDone} = this.props;    
+    const {countNotDone} = this.props;
 
-    return (<footer>Незаконченных дел: <TodoCount count={count} /></footer>)
+    return (<footer className={styles.footer}>
+      <p className={styles.text}>Завершенные <TodoCount count={countDone} /></p>
+      <p className={styles.text}>Не завершенные <TodoCount count={countNotDone} /></p>
+      <p className={styles.text}>Все <TodoCount count={countAll} /></p>
+    </footer>)
   }
 }
 
 const TodoCount = ({ count }) => (<span className={
   classnames({
     [styles.count]: true,
-    [styles.isMany]: count < 5
+    [styles.isMany]: count < 3
   })
 }>{count}</span>);
 
 Footer.defaultProps = {
-  count: 0
+  countAll: 0
 };
 
 Footer.propTypes = {

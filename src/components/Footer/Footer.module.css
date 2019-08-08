@@ -1,5 +1,17 @@
+.footer {
+  display: flex;
+}
+
+.text {
+  margin-right: 10px;
+}
+
+.text:nth-last-child(1) {
+  margin-right: 0;
+}
+
 .count {
-  color: green;
+  color: blue;
   font-weight: 700;
 }
 

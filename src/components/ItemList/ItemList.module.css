@@ -1,11 +1,13 @@
 .list {
   font-weight: bold;
   list-style: none;
-  padding: 0 10px;
-  
+  padding: 0 10px;  
 }
 
 .listItem {
+  border: 1px solid #CCCCCC;
+  border-radius: 2rem;
   display: flex;
   justify-content: space-between;
+  margin-bottom: .5rem;
 }

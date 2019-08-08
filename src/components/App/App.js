@@ -20,13 +20,13 @@ class App extends React.Component {
     return(
       <Router>
         <div className={styles.App}>
-          <Card className={styles.sidebar}>
-            <MenuList>
-              <Link to='/' className={styles.link}><MenuItem>About</MenuItem></Link>
-              <Link to='/todo' className={styles.link}><MenuItem>ToDo</MenuItem></Link>
-              <Link to='/contacts' className={styles.link}><MenuItem>Contacts</MenuItem></Link>
+          <div className={styles.sidebar}>
+            <MenuList className={styles.sidebar_nav}>
+              <Link to='/todo' className={styles.link}><MenuItem className={styles.link_item}>Список дел</MenuItem></Link>
+              <Link to='/' className={styles.link}><MenuItem className={styles.link_item}>Создатель</MenuItem></Link>
+              <Link to='/contacts' className={styles.link}><MenuItem className={styles.link_item}>Контакты</MenuItem></Link>
             </MenuList>
-          </Card>
+          </div>
           <Card className={styles.content}>
             <Route path='/' exact component={About} />
             <Route path='/todo' component={Todo} />
