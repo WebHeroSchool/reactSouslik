@@ -2,6 +2,7 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import styles from './InputItem.module.css'
 
 class InputItem extends React.Component {
   componentDidMount() {
@@ -12,7 +13,7 @@ class InputItem extends React.Component {
     error: false,
     label: 'Давай добавим новую задачу',
     inputValue: ''
-  };
+  }; 
 
   onClickClearField = () => {
 
@@ -34,23 +35,25 @@ class InputItem extends React.Component {
 
   render() {
     
-    return (<Grid>
+    return (<Grid className={styles.Grid}>
       <TextField
+        className={styles.TextField}
         error={this.state.error}
-        id="standard-dense"
+        id="outlined-dense"        
         label={this.state.label}
         margin="dense"
-        fullWidth
-        value={this.state.inputValue}
         onChange={event => this.setState({ inputValue: event.target.value })}
+        value={this.state.inputValue}
+        variant="outlined"
+          
       />
-      <Button
-        variant="contained"
+      <Button        
+        className={styles.Button}
         color="primary"
-        fullWidth
         onClick={this.onClickClearField}
+        variant="contained"
       >
-        Добавить
+        +
       </Button>
     </Grid>);
   }

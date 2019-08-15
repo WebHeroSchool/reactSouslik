@@ -5,6 +5,7 @@ import Footer from '../Footer/Footer';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import styles from './Todo.module.css';
+import NoTask from '../NoTask/NoTask';
 
 class Todo extends React.Component {
   state = {
@@ -16,36 +17,48 @@ class Todo extends React.Component {
   };
 
   onClickAdd = (value) => {
-    const newItemList = this.state.items.map( item => {
-      const newItem = {...item};
-      return newItem;
-    });
-
     let newId = 0;
-    let arr = newItemList.map( item => {
-      return item.id; 
+    let arrId = [];
+    let arrValue = [];
+    let newItemList = this.state.items.map( item => {
+      item.isDouble = false;
+      arrId.push(item.id);
+      arrValue.push(item.value);
+      return item;
     });
 
-    if (arr.length > 0) {
-      newId = Math.max.apply(null, arr) + 1;
-    }
+    if (!arrValue.includes(value)) {
+      if (arrId.length > 0) {
+        newId = Math.max.apply(null, arrId) + 1;
+      }
 
-    if (getValues(newItemList, value) === false) {
       this.setState(state => ({
         items: [
           ...state.items,
           {
             value,
             isDone: false,
-            id: newId
+            id: newId,
+            isDouble: false
           }
         ],
         count: ++state.count,
         countNotDone: ++state.countNotDone
       }));
     } else {
-      console.log(InputItem);
+      const newItemList = this.state.items.map( item => {
+        const newItem = {...item};
+  
+        if (item.value === value) {
+          newItem.isDouble = true;
+        }
+          
+        return newItem;
+      });
       
+      this.setState({ 
+        items: newItemList,
+      });
     }
   } 
 
@@ -83,7 +96,7 @@ class Todo extends React.Component {
   render() {
 
     return (
-      <div >
+      <div>
         <Card>
           <CardContent>
             <div className={styles.wrapper}>
@@ -93,13 +106,14 @@ class Todo extends React.Component {
                 countDone={this.state.countDone}
                 countNotDone={this.state.countNotDone}
               />    
-            </div>            
-            <InputItem onClickAdd={this.onClickAdd} />
+            </div>
             <ItemList
               items={this.state.items}
               onClickDone={this.onClickDone}
               onClickDelete={this.onClickDelete}
-            />            
+            />
+            <NoTask count={this.state.count} />
+            <InputItem onClickAdd={this.onClickAdd} />            
           </CardContent>
         </Card>
       </div>
@@ -117,16 +131,4 @@ function getCountDon(i) {
     }   
   });
   return newCount.length;
-};
-
-function getValues(i, value) {
-  const newValueList = i.map( item => {
-    return item.value;
-  });
-
-  if (newValueList.indexOf( value ) !== -1) {
-    return true;
-  } else {
-    return false;
-  }
 };

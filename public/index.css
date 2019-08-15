@@ -1,3 +1,18 @@
 body {
   background: #E5E5E5;
 }
+
+.MuiOutlinedInput-notchedOutline {
+  border-radius: 30px !important;
+}
+.MuiButton-containedPrimary {
+  border-radius: 50% !important;
+}
+
+.MuiButton-root {
+  min-width: auto !important;
+}
+
+.MuiFormControl-marginDense {
+  margin: 0 10px 0 0 !important;
+}

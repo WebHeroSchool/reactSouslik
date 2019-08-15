@@ -1,0 +1,23 @@
+.noTask {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.hidden {
+  display: none;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+  margin: 25px 0 10px 0;
+}
+
+.subtitle {
+  color: #999;
+  text-align: center;
+}
