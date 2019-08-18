@@ -3,18 +3,18 @@
 }
 
 .text {
-  margin-right: 10px;
+  padding: 12px;
+  text-align: center;
 }
 
-.text:nth-last-child(1) {
-  margin-right: 0;
+
+.active {
+  background: blue;
+  border-radius: 30px;
+  color: white;  
 }
 
 .count {
   color: blue;
   font-weight: 700;
-}
-
-.isMany {
-  color: red;
 }

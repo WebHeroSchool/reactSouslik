@@ -13,7 +13,8 @@ class Todo extends React.Component {
     ],
     count: 0,
     countDone: 0,
-    countNotDone: 0
+    countNotDone: 0,
+    isChecked: 'all'
   };
 
   onClickAdd = (value) => {
@@ -22,6 +23,7 @@ class Todo extends React.Component {
     let arrValue = [];
     let newItemList = this.state.items.map( item => {
       item.isDouble = false;
+      item.isHidden = false;
       arrId.push(item.id);
       arrValue.push(item.value);
       return item;
@@ -37,8 +39,8 @@ class Todo extends React.Component {
           ...state.items,
           {
             value,
-            isDone: false,
             id: newId,
+            isDone: false,            
             isDouble: false
           }
         ],
@@ -82,8 +84,8 @@ class Todo extends React.Component {
 
   onClickDelete = id => {
     const newCount = this.state.count - 1,
-      newItemList = this.state.items.filter( item => {
-        return item.id !== id;
+    newItemList = this.state.items.filter( item => {
+      return item.id !== id;
     });    
 
     this.setState({
@@ -92,6 +94,32 @@ class Todo extends React.Component {
       countNotDone: newCount - getCountDon(newItemList),
       items: newItemList }); 
   };
+
+  onClickSort = (e) => {
+    const elem = e.target;
+    const newItemList = this.state.items.filter( item => {
+      item.isHidden = true;
+
+      if(elem.id === 'isDone') {
+        this.setState({ isChecked: 'isDone' });
+        if(item.isDone) {
+          item.isHidden = false;
+        }
+      } else if(elem.id === 'isNotDone') {
+        this.setState({ isChecked: 'isNotDone' });
+        if(!item.isDone) {
+          item.isHidden = false;
+        }
+      } else {
+        this.setState({ isChecked: 'all' });
+        item.isHidden = false
+      }
+      console.log(this.state)
+      return item;
+    });    
+
+    this.setState({ items: newItemList }); 
+  };  
 
   render() {
 
@@ -105,14 +133,19 @@ class Todo extends React.Component {
                 countAll={this.state.count}
                 countDone={this.state.countDone}
                 countNotDone={this.state.countNotDone}
+                onClickSort={this.onClickSort}
+                isChecked={this.state.isChecked}
               />    
             </div>
-            <ItemList
-              items={this.state.items}
-              onClickDone={this.onClickDone}
-              onClickDelete={this.onClickDelete}
-            />
-            <NoTask count={this.state.count} />
+            <div className={styles.box}>
+              <ItemList
+                items={this.state.items}
+                onClickDone={this.onClickDone}
+                onClickDelete={this.onClickDelete}
+              />
+              <NoTask count={this.state.count} />
+            </div>
+            
             <InputItem onClickAdd={this.onClickAdd} />            
           </CardContent>
         </Card>

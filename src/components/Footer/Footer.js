@@ -11,26 +11,40 @@ class Footer extends React.Component {
 
   render() {
     const {countAll} = this.props;
-    const {countDone} = this.props;    
+    const {countDone} = this.props;
     const {countNotDone} = this.props;
+    const {onClickSort} = this.props;
+    const {isChecked} = this.props;
+    console.log(isChecked);
 
     return (<footer className={styles.footer}>
-      <p className={styles.text}>Завершенные <TodoCount count={countDone} /></p>
-      <p className={styles.text}>Не завершенные <TodoCount count={countNotDone} /></p>
-      <p className={styles.text}>Все <TodoCount count={countAll} /></p>
+      <p className={classnames({
+          [styles.text]: true,
+          [styles.active]: isChecked === 'isDone'
+        })} onClick={onClickSort} id={'isDone'}>Завершенные <TodoCount count={countDone} /></p>
+      <p className={classnames({
+          [styles.text]: true,
+          [styles.active]: isChecked === 'isNotDone'
+        })} onClick={onClickSort} id={'isNotDone'}>Не завершенные <TodoCount count={countNotDone} /></p>
+      <p className={classnames({
+        [styles.text]: true,
+        [styles.active]: isChecked === 'all'
+      })} onClick={onClickSort} id={'all'}>Все <TodoCount count={countAll} /></p>
     </footer>)
   }
 }
 
-const TodoCount = ({ count }) => (<span className={
-  classnames({
-    [styles.count]: true,
-    [styles.isMany]: count < 3
-  })
-}>{count}</span>);
+const TodoCount = ({ count }) => (
+  <span className={styles.count}>
+    {count}
+  </span>
+);
 
 Footer.defaultProps = {
-  countAll: 0
+  countAll: 0,
+  countDone: 0,
+  countNotDone: 0,
+  isChecked: 'all'
 };
 
 Footer.propTypes = {

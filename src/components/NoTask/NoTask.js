@@ -13,7 +13,7 @@ class NoTask extends React.Component {
 
   render() {
     const {count} = this.props;
-    
+
     return (<div className={
       classnames({
         [styles.noTask]: true,

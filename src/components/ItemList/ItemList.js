@@ -8,20 +8,20 @@ const ItemList = ({ items, onClickDone, onClickDelete }) => (<ul className={styl
     <li key={item.id} className={
       classnames({
         [styles.listItem]: true,
-        [styles.isDouble]: item.isDouble
+        [styles.isDouble]: item.isDouble,
+        [styles.isHidden]: item.isHidden
       })}>
       <Item
+        id={item.id}
         value={item.value}
         isDone={item.isDone}
-        id={item.id}
         onClickDone={onClickDone}
-        onClickDelete={onClickDelete}
-        isDouble={item.isDouble}       
+        onClickDelete={onClickDelete} 
       />
       <div className={
         classnames({
           [styles.hint]: true,
-          [styles.visible]: item.isDouble
+          [styles.isHidden]: !item.isDouble
         })
       }>
         <p className={styles.hintText}>Такое задание уже есть в нашем списке. Введите другое задание</p>

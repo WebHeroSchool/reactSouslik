@@ -2,7 +2,7 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import styles from './InputItem.module.css'
+import styles from './InputItem.module.css';
 
 class InputItem extends React.Component {
   componentDidMount() {
@@ -44,8 +44,7 @@ class InputItem extends React.Component {
         margin="dense"
         onChange={event => this.setState({ inputValue: event.target.value })}
         value={this.state.inputValue}
-        variant="outlined"
-          
+        variant="outlined"          
       />
       <Button        
         className={styles.Button}
