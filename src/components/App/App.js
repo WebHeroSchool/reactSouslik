@@ -2,17 +2,17 @@ import React from 'react';
 import Card from '@material-ui/core/Card';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
+import PropTypes from 'prop-types';
 import Todo from '../Todo/Todo';
 import About from '../About/About';
 import styles from './App.module.css';
-import PropTypes  from 'prop-types';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 class App extends React.Component {
 
   render() {
 
-    return(
+    return (
       <Router>
         <div className={styles.App}>
           <div className={styles.sidebar}>
@@ -37,7 +37,7 @@ App.propTypes = {
   isDone: PropTypes.bool,
   onClickDone: PropTypes.func,
   onClickDelete: PropTypes.func,
-  onClickAdd: PropTypes.func
-}
+  onClickAdd: PropTypes.func,
+};
 
 export default App;

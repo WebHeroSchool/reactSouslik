@@ -1,6 +1,26 @@
-.images {
+.title {
+  font-weight: 100;
+}
+
+.wrapperImg {
+  
+  width: 30%;
+}
+.avatar {
   border-radius: 50%;
-  width: 100px;
+  width: 100%;
+}
+
+.error_box {
+  text-align: center;
+}
+
+.error_img {
+  width: 50%;
+}
+
+.error_text {  
+  display: block;
 }
 
 .list {

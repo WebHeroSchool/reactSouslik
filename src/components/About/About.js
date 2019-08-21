@@ -3,8 +3,10 @@ import CardContent from '@material-ui/core/CardContent';
 import Preloader from '../Preloader/Preloader';
 import Octokit from '@octokit/rest';
 import styles from './About.module.css';
+import classnames from 'classnames';
 
 const octokit = new Octokit();
+const src_avatar = "images/crazysouslik1.png";
 
 class About extends React.Component {
   state = {
@@ -51,14 +53,25 @@ class About extends React.Component {
 
     return (
       <CardContent>
-        <h1>{ isLoading ? <Preloader /> : this.state.name }</h1>
+        <div>{ isLoading ? <Preloader /> : <header>
+              <div className={styles.wrapperImg}>
+                <img src={avatarUrl} alt={name} className={styles.avatar}/>
+              </div>
+              <h1 class={styles.title}>Владимир Сысоев</h1>
+            </header> }
+        </div> 
+        
         {!isLoading && 
           <div>
-            {!fetchSucces ? "Error " + error : 
+            
+         
+            {!fetchSucces ? (
+              <div className={styles.error_box}>
+                <img src='images/CrazySouslik2.png' className={styles.error_img}/>
+                <span className={styles.error_text}>Упс! Произошла какая-то ошибка...</span>
+              </div>              
+            ) : 
               <div>
-                <div>
-                  <img src={avatarUrl} alt={name} className={styles.images}/>
-                </div>             
                 <ol className={styles.list}>
                   {repoList.map(repo => (
                     <li key={repo.id} className={styles.itemList}>
