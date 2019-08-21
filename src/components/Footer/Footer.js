@@ -15,7 +15,6 @@ class Footer extends React.Component {
     const {countNotDone} = this.props;
     const {onClickSort} = this.props;
     const {isChecked} = this.props;
-    console.log(isChecked);
 
     return (<footer className={styles.footer}>
       <p className={classnames({

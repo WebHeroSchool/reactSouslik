@@ -29,19 +29,36 @@
   position: absolute;
   left: 0;
   top: 0;
-  transform: translateY(-120%);
+  z-index: 9;
 }
 
-.hint:after {
+.hintUp {
+  transform: translateY(-115%);
+}
+
+.hintDown {
+  transform: translateY(105%);
+}
+
+.hintUp:before,
+.hintDown:before {
   content: '';
   background: blue;
   display: block;
   position: absolute;
   left: 5%;
-  bottom: -5px;
+  transform: rotate(45deg);
   height: 10px;
   width: 10px;
-  transform: rotate(45deg);
+}
+
+.hintDown:before {
+  top: -5px;
+  
+}
+
+.hintUp:before {  
+  bottom: -5px; 
 }
 
 .hintText {

@@ -9,25 +9,25 @@ import NoTask from '../NoTask/NoTask';
 
 class Todo extends React.Component {
   state = {
-    items: [
-    ],
+    items: [],
     count: 0,
     countDone: 0,
     countNotDone: 0,
-    isChecked: 'all'
+    isChecked: 'all',
+    id_0: 0
   };
 
   onClickAdd = (value) => {
-    let newId = 0;
-    let arrId = [];
-    let arrValue = [];
-    let newItemList = this.state.items.map( item => {
-      item.isDouble = false;
-      item.isHidden = false;
-      arrId.push(item.id);
-      arrValue.push(item.value);
-      return item;
-    });
+    let newId = 0,
+      arrId = [],
+      arrValue = [],
+      newItemList = this.state.items.map(item => {
+        item.isDouble = false;
+        item.isHidden = false;
+        arrId.push(item.id);
+        arrValue.push(item.value);
+        return item;
+      });
 
     if (!arrValue.includes(value)) {
       if (arrId.length > 0) {
@@ -40,7 +40,7 @@ class Todo extends React.Component {
           {
             value,
             id: newId,
-            isDone: false,            
+            isDone: false,
             isDouble: false
           }
         ],
@@ -48,34 +48,41 @@ class Todo extends React.Component {
         countNotDone: ++state.countNotDone
       }));
     } else {
-      const newItemList = this.state.items.map( item => {
-        const newItem = {...item};
-  
+      let id_0 = this.state.items[0].id;
+      const newItemList = this.state.items.map(item => {
+        const newItem = {
+          ...item
+        };
+
         if (item.value === value) {
           newItem.isDouble = true;
         }
-          
+
         return newItem;
       });
       
-      this.setState({ 
+
+      this.setState({
         items: newItemList,
+        id_0: id_0
       });
     }
-  } 
+  }
 
   onClickDone = id => {
-    const newItemList = this.state.items.map( item => {
-      const newItem = {...item};
+    const newItemList = this.state.items.map(item => {
+      const newItem = {
+        ...item
+      };
 
       if (item.id === id) {
         newItem.isDone = !item.isDone;
-      }      
+      }
 
       return newItem;
     });
-    
-    this.setState({ 
+
+    this.setState({
       items: newItemList,
       countDone: getCountDon(newItemList),
       countNotDone: this.state.count - getCountDon(newItemList)
@@ -84,72 +91,82 @@ class Todo extends React.Component {
 
   onClickDelete = id => {
     const newCount = this.state.count - 1,
-    newItemList = this.state.items.filter( item => {
-      return item.id !== id;
-    });    
+      newItemList = this.state.items.filter(item => {
+        return item.id !== id;
+      });
 
     this.setState({
       count: newCount,
       countDone: getCountDon(newItemList),
       countNotDone: newCount - getCountDon(newItemList),
-      items: newItemList }); 
+      items: newItemList
+    });
   };
 
   onClickSort = (e) => {
     const elem = e.target;
-    const newItemList = this.state.items.filter( item => {
+    const newItemList = this.state.items.filter(item => {
       item.isHidden = true;
 
-      if(elem.id === 'isDone') {
-        this.setState({ isChecked: 'isDone' });
-        if(item.isDone) {
+      if (elem.id === 'isDone') {
+        this.setState({
+          isChecked: 'isDone'
+        });
+        if (item.isDone) {
           item.isHidden = false;
         }
-      } else if(elem.id === 'isNotDone') {
-        this.setState({ isChecked: 'isNotDone' });
-        if(!item.isDone) {
+      } else if (elem.id === 'isNotDone') {
+        this.setState({
+          isChecked: 'isNotDone'
+        });
+        if (!item.isDone) {
           item.isHidden = false;
         }
       } else {
-        this.setState({ isChecked: 'all' });
+        this.setState({
+          isChecked: 'all'
+        });
         item.isHidden = false
       }
       console.log(this.state)
       return item;
-    });    
+    });
 
-    this.setState({ items: newItemList }); 
-  };  
+    this.setState({
+      items: newItemList
+    });
+  };
 
   render() {
 
-    return (
-      <div>
-        <Card>
-          <CardContent>
-            <div className={styles.wrapper}>
-              <h1 className={styles.title}>Список моих дел</h1>
-              <Footer 
-                countAll={this.state.count}
-                countDone={this.state.countDone}
-                countNotDone={this.state.countNotDone}
-                onClickSort={this.onClickSort}
-                isChecked={this.state.isChecked}
-              />    
-            </div>
-            <div className={styles.box}>
-              <ItemList
-                items={this.state.items}
-                onClickDone={this.onClickDone}
-                onClickDelete={this.onClickDelete}
-              />
-              <NoTask count={this.state.count} />
-            </div>
-            
-            <InputItem onClickAdd={this.onClickAdd} />            
-          </CardContent>
-        </Card>
-      </div>
+    return ( <div>
+      <Card >
+        <CardContent >
+          <div className = {
+            styles.wrapper
+          }>
+            <h1 className = {
+              styles.title
+            }>Список моих дел</h1>
+            <Footer countAll = {this.state.count}
+                    countDone = {this.state.countDone}
+                    countNotDone = {this.state.countNotDone}
+                    onClickSort = {this.onClickSort}
+                    isChecked = {this.state.isChecked}
+            />
+          </div>
+          <div className = {styles.box} >
+            <ItemList id_0 = {this.state.id_0}
+                      items = {this.state.items}
+                      onClickDone = {this.onClickDone}
+                      onClickDelete = {this.onClickDelete}
+            />
+            <NoTask count = {this.state.count} />
+          </div>
+          <InputItem onClickAdd = {this.onClickAdd} />
+        </CardContent >
+      </Card>
+    </div>
     );
   }
 }
@@ -157,11 +174,11 @@ class Todo extends React.Component {
 export default Todo;
 
 function getCountDon(i) {
-  const newCount = i.filter( item => {
-      
-    if(item.isDone === true) {
+  const newCount = i.filter(item => {
+
+    if (item.isDone === true) {
       return item.isDone
-    }   
+    }
   });
   return newCount.length;
 };
