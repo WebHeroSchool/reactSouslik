@@ -1,7 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
 import styles from './Footer.module.css';
-import PropTypes from 'prop-types';
 
 const date = new Date();
 class Footer extends React.Component {
@@ -10,25 +9,34 @@ class Footer extends React.Component {
   }
 
   render() {
-    const {countAll} = this.props;
-    const {countDone} = this.props;
-    const {countNotDone} = this.props;
-    const {onClickSort} = this.props;
-    const {isChecked} = this.props;
+    const {countAll} = this.props,
+          {countDone} = this.props,
+          {countNotDone} = this.props,
+          {onClickSort} = this.props,
+          {isChecked} = this.props;
 
     return (<footer className={styles.footer}>
-      <p className={classnames({
+      <h1 className = {
+              styles.title
+            }>Список <span className={styles.visible}>моих </span>дел</h1>
+      <nav className={styles.nav}>
+        <div className={classnames({
           [styles.text]: true,
           [styles.active]: isChecked === 'isDone'
-        })} onClick={onClickSort} id={'isDone'}>Завершенные <TodoCount count={countDone} /></p>
-      <p className={classnames({
+        })} onClick={onClickSort} id={'isDone'}>
+          <img src='images/isDone.svg' className={styles.hidden} alt="CrazySouslik" />
+          <span className={styles.visible}>Завершенные</span> <TodoCount count={countDone} /></div>
+        <div className={classnames({
+            [styles.text]: true,
+            [styles.active]: isChecked === 'isNotDone'
+          })} onClick={onClickSort} id={'isNotDone'}>
+            <img src='images/isNotDone.svg' className={styles.hidden} alt="CrazySouslik" />
+            <span className={styles.visible}>Не завершенные</span> <TodoCount count={countNotDone} /></div>
+        <div className={classnames({
           [styles.text]: true,
-          [styles.active]: isChecked === 'isNotDone'
-        })} onClick={onClickSort} id={'isNotDone'}>Не завершенные <TodoCount count={countNotDone} /></p>
-      <p className={classnames({
-        [styles.text]: true,
-        [styles.active]: isChecked === 'all'
-      })} onClick={onClickSort} id={'all'}>Все <TodoCount count={countAll} /></p>
+          [styles.active]: isChecked === 'all'
+        })} onClick={onClickSort} id={'all'}>Все <TodoCount count={countAll} /></div>
+      </nav>      
     </footer>)
   }
 }
@@ -44,10 +52,6 @@ Footer.defaultProps = {
   countDone: 0,
   countNotDone: 0,
   isChecked: 'all'
-};
-
-Footer.propTypes = {
-  count: PropTypes.number.isRequired 
 };
 
 export default Footer;

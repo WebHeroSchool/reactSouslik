@@ -1,10 +1,26 @@
 .footer {
+  align-items: center;
   display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 1.5rem;
+}
+
+.nav {
+  display: flex;
+  padding-top: 5px;
+}
+
+.hidden {
+  display: none;
+  float: left;
+  margin-right: 5px;
 }
 
 .text {
-  padding: 12px;
-  text-align: center;
+  padding: 5px 5px;
 }
 
 
@@ -17,4 +33,17 @@
 .count {
   color: blue;
   font-weight: 700;
+}
+
+@media (max-width: 580px) {
+  .title {
+    font-size: 1.2rem;
+  }
+  .visible {
+    display: none;
+  }
+
+  .hidden {
+    display: block;
+  }
 }

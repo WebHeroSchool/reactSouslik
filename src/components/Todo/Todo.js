@@ -5,7 +5,7 @@ import Footer from '../Footer/Footer';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import styles from './Todo.module.css';
-import NoTask from '../NoTask/NoTask';
+import Warning from '../Warning/Warning';
 
 class Todo extends React.Component {
   state = {
@@ -59,8 +59,7 @@ class Todo extends React.Component {
         }
 
         return newItem;
-      });
-      
+      });      
 
       this.setState({
         items: newItemList,
@@ -138,30 +137,28 @@ class Todo extends React.Component {
   };
 
   render() {
+    const warningTitle = 'Вы еще не добавили ни одной задачи',
+          warningSubtitle = 'Сделайте это прямо сейчас!';
 
     return ( <div>
       <Card >
         <CardContent >
-          <div className = {
-            styles.wrapper
-          }>
-            <h1 className = {
-              styles.title
-            }>Список моих дел</h1>
             <Footer countAll = {this.state.count}
                     countDone = {this.state.countDone}
                     countNotDone = {this.state.countNotDone}
                     onClickSort = {this.onClickSort}
                     isChecked = {this.state.isChecked}
             />
-          </div>
           <div className = {styles.box} >
             <ItemList id_0 = {this.state.id_0}
                       items = {this.state.items}
                       onClickDone = {this.onClickDone}
                       onClickDelete = {this.onClickDelete}
             />
-            <NoTask count = {this.state.count} />
+            <Warning
+              count = {this.state.count}
+              warningTitle = {warningTitle}
+              warningSubtitle = {warningSubtitle} />
           </div>
           <InputItem onClickAdd = {this.onClickAdd} />
         </CardContent >

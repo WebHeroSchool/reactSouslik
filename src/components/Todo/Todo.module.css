@@ -4,13 +4,9 @@
   justify-content: space-between;
 }
 
-.title {
-  font-size: 1.5rem;
-}
-
 .box {
-  height: 500px;
   overflow-y: scroll;
+  height: 500px;
 }
 
 .box::-webkit-scrollbar-thumb {
@@ -23,5 +19,5 @@
 }
 
 .box::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
