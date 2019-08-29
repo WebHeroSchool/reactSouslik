@@ -17,7 +17,7 @@ I will be very happy if you visit my page
  **My application contains two pages**
  
  1. ToDo List
- ![Page Todo: Image](https://yadi.sk/i/BWGgzHxLlYl--w)
+ ![Page Todo: Image](https://drive.google.com/file/d/1kqEXdkFHRws9G7QTwxht4iXEt1yGD-OR/view?usp=sharing)
  ![Page Todo: Image](https://yadi.sk/i/oLjFk_CqIFoyDA)
  2. About 
  ![Page About: Image](https://yadi.sk/i/NLkH_9lgRHCODA)
