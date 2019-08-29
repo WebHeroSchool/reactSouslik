@@ -19,7 +19,7 @@ I will be very happy if you visit my page
  1. ToDo List
  2. About 
   
-##How to work with this project
+# How to work with this project
 
 1. `git clone https://github.com/WebHeroSchool/reactSouslik.git`
 2. `cd reactsouslik`
@@ -32,7 +32,7 @@ You can now view todo in the browser
 In the project directory, you can run:
 
 
-# Available Scripts
+## Available Scripts
 
 ### `npm start`
   
