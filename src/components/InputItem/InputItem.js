@@ -27,11 +27,11 @@ class InputItem extends React.Component {
         error: false,
         label: 'Добавить задание',
         inputValue: ''
-      });
+    })
 
       this.props.onClickAdd(this.state.inputValue.toUpperCase());
     }
-  }
+  };
 
   render() {
     

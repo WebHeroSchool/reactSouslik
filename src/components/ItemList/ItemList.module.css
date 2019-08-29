@@ -1,6 +1,7 @@
 .list {
   font-weight: bold;
   list-style: none;
+  margin: 0;
   padding: 0;  
 }
 
@@ -15,11 +16,11 @@
 }
 
 .isDouble {
-  border: 1px solid blue;
+  border: 1px solid #356EFF;
 }
 
 .hint {
-  background: blue;
+  background: #356EFF;
   box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2);
   border-radius: 5px;
   color: white;
@@ -43,7 +44,7 @@
 .hintUp:before,
 .hintDown:before {
   content: '';
-  background: blue;
+  background: #356EFF;
   display: block;
   position: absolute;
   left: 5%;

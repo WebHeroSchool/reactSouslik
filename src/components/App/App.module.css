@@ -1,7 +1,7 @@
 .App {
   border-radius: .5rem;
   font-family: 'Montserrat', sans-serif;
-  min-height: 700px;
+  height: 100vh;
   margin: auto;
   max-width: 700px;
   width: 100%;
@@ -18,7 +18,7 @@
 }
 
 .content {
-  width: 100%;
+  height: calc(100vh - 75px);
 }
 
 .link {
@@ -41,4 +41,10 @@
 
 .link:focus {
   outline: none;
+}
+
+@media (max-width: 472px) {
+  .link_item {
+    font-size: 14px !important;
+  }
 }

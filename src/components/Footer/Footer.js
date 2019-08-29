@@ -9,11 +9,7 @@ class Footer extends React.Component {
   }
 
   render() {
-    const {countAll} = this.props,
-          {countDone} = this.props,
-          {countNotDone} = this.props,
-          {onClickSort} = this.props,
-          {isChecked} = this.props;
+    const {countAll, countDone, countNotDone, onClickSort, isActive} = this.props;
 
     return (<footer className={styles.footer}>
       <h1 className = {
@@ -22,27 +18,28 @@ class Footer extends React.Component {
       <nav className={styles.nav}>
         <div className={classnames({
           [styles.text]: true,
-          [styles.active]: isChecked === 'isDone'
+          [styles.active]: isActive === 'isDone'
         })} onClick={onClickSort} id={'isDone'}>
-          <img src='images/isDone.svg' className={styles.hidden} alt="CrazySouslik" />
-          <span className={styles.visible}>Завершенные</span> <TodoCount count={countDone} /></div>
+          Завершенные <TodoCount count={countDone} el={'isDone'} isActive={isActive} /></div> 
         <div className={classnames({
             [styles.text]: true,
-            [styles.active]: isChecked === 'isNotDone'
+            [styles.active]: isActive === 'isNotDone'
           })} onClick={onClickSort} id={'isNotDone'}>
-            <img src='images/isNotDone.svg' className={styles.hidden} alt="CrazySouslik" />
-            <span className={styles.visible}>Не завершенные</span> <TodoCount count={countNotDone} /></div>
+            Не завершенные <TodoCount count={countNotDone} el={'isNotDone'} isActive={isActive} /></div>
         <div className={classnames({
           [styles.text]: true,
-          [styles.active]: isChecked === 'all'
-        })} onClick={onClickSort} id={'all'}>Все <TodoCount count={countAll} /></div>
+          [styles.All]: true,
+          [styles.active]: isActive === 'all'
+        })} onClick={onClickSort} id={'all'}>Все <TodoCount count={countAll} el={'all'} isActive={isActive} /></div>
       </nav>      
     </footer>)
   }
 }
 
-const TodoCount = ({ count }) => (
-  <span className={styles.count}>
+const TodoCount = ({ count, isActive, el }) => (
+  <span className={classnames({
+      [styles.count]: true,
+      [styles.countColorWhite]: el === isActive })}>
     {count}
   </span>
 );
@@ -51,7 +48,7 @@ Footer.defaultProps = {
   countAll: 0,
   countDone: 0,
   countNotDone: 0,
-  isChecked: 'all'
+  isActive: 'all'
 };
 
 export default Footer;

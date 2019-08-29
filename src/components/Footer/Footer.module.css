@@ -13,37 +13,42 @@
   padding-top: 5px;
 }
 
-.hidden {
-  display: none;
-  float: left;
-  margin-right: 5px;
-}
-
 .text {
-  padding: 5px 5px;
+  padding: 5px 15px;
 }
-
 
 .active {
-  background: blue;
+  background:#356EFF;
   border-radius: 30px;
   color: white;  
 }
 
 .count {
-  color: blue;
+  color: #356EFF;
+  font-size: 1rem;
   font-weight: 700;
 }
 
-@media (max-width: 580px) {
+.countColorWhite {
+  color: white !important;
+}
+
+@media (max-width: 610px) {
   .title {
     font-size: 1.2rem;
-  }
-  .visible {
-    display: none;
+    margin: 0;
   }
 
-  .hidden {
-    display: block;
+  .text {
+    font-size: 0;
+    position: relative;
+  }
+  
+  .All {
+    font-size: 1rem;
+  }
+  
+  .visible {
+    display: none;
   }
 }

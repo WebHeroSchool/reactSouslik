@@ -50,8 +50,8 @@ class Item extends React.Component {
           onClick={() => onClickDelete(id)}
         />
       </div>
-    )
-  }
-}
+    );
+  };
+};
 
 export default Item;

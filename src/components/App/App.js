@@ -10,23 +10,17 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 class App extends React.Component {
   state = {
-    isCheck: true
-  };
+    isCheck: document.location.href.includes('/todo')
+  }
 
   render() {
-
-    const click = (e) => {
-      let i = true;
-      if (e.target.id === 'btnList') {
-        i = true;
-      } else {
-        i = false;
-      }
-
-      this.setState({
-        isCheck: i
-      });
-    }
+    const click = () => {
+      setTimeout( () => {
+        this.setState({
+          isCheck: document.location.href.includes('/todo')
+        });
+      }, 100);      
+    };
 
     return (
       <Router>
@@ -34,7 +28,6 @@ class App extends React.Component {
           <nav className={styles.sidebar}>
             <MenuList className={styles.sidebar_nav}>
               <Link to='/todo' onClick={click}
-
                 className={classnames({
                   [styles.link]: true,
                   [styles.link_active]: this.state.isCheck

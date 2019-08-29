@@ -13,21 +13,22 @@ class Todo extends React.Component {
     count: 0,
     countDone: 0,
     countNotDone: 0,
-    isChecked: 'all',
+    isActive: 'all',
     id_0: 0
   };
 
   onClickAdd = (value) => {
     let newId = 0,
       arrId = [],
-      arrValue = [],
-      newItemList = this.state.items.map(item => {
-        item.isDouble = false;
-        item.isHidden = false;
-        arrId.push(item.id);
-        arrValue.push(item.value);
-        return item;
-      });
+      arrValue = [];
+
+    this.state.items.map(item => {
+      item.isDouble = false;
+      item.isHidden = false;
+      arrId.push(item.id);
+      arrValue.push(item.value);
+      return item;
+    });
 
     if (!arrValue.includes(value)) {
       if (arrId.length > 0) {
@@ -66,7 +67,7 @@ class Todo extends React.Component {
         id_0: id_0
       });
     }
-  }
+  };
 
   onClickDone = id => {
     const newItemList = this.state.items.map(item => {
@@ -109,25 +110,24 @@ class Todo extends React.Component {
 
       if (elem.id === 'isDone') {
         this.setState({
-          isChecked: 'isDone'
+          isActive: 'isDone'
         });
         if (item.isDone) {
           item.isHidden = false;
         }
       } else if (elem.id === 'isNotDone') {
         this.setState({
-          isChecked: 'isNotDone'
+          isActive: 'isNotDone'
         });
         if (!item.isDone) {
           item.isHidden = false;
         }
       } else {
         this.setState({
-          isChecked: 'all'
+          isActive: 'all'
         });
         item.isHidden = false
       }
-      console.log(this.state)
       return item;
     });
 
@@ -140,14 +140,14 @@ class Todo extends React.Component {
     const warningTitle = 'Вы еще не добавили ни одной задачи',
           warningSubtitle = 'Сделайте это прямо сейчас!';
 
-    return ( <div>
+    return ( <div className={styles.todo_wrapp}>
       <Card >
         <CardContent >
             <Footer countAll = {this.state.count}
                     countDone = {this.state.countDone}
                     countNotDone = {this.state.countNotDone}
                     onClickSort = {this.onClickSort}
-                    isChecked = {this.state.isChecked}
+                    isActive = {this.state.isActive}
             />
           <div className = {styles.box} >
             <ItemList id_0 = {this.state.id_0}
@@ -171,11 +171,7 @@ class Todo extends React.Component {
 export default Todo;
 
 function getCountDon(i) {
-  const newCount = i.filter(item => {
+  const newCount = i.filter(item => {return item.isDone});
 
-    if (item.isDone === true) {
-      return item.isDone
-    }
-  });
   return newCount.length;
 };
