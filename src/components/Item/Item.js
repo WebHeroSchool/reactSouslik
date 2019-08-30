@@ -29,6 +29,7 @@ class Item extends React.Component {
       <div className={styles.wrapper}>
         <div>
           <Checkbox
+            color="primary"
             checked={isDone}
             tabIndex={-1}
             onClick={() => onClickDone(id)}
@@ -40,7 +41,7 @@ class Item extends React.Component {
             })
           }>{value}</span>
         </div>
-        <Checkbox
+        <Checkbox          
           value="checkedF"
           indeterminate
           inputProps={{
@@ -49,8 +50,8 @@ class Item extends React.Component {
           onClick={() => onClickDelete(id)}
         />
       </div>
-    )
-  }
-}
+    );
+  };
+};
 
 export default Item;

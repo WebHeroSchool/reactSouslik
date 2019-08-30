@@ -1,0 +1,11 @@
+.Grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.TextField {  
+  border-radius: 10px;
+  float: left;
+  margin-right: 20px;
+  width: 100%;  
+}

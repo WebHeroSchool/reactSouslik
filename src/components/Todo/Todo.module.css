@@ -1,9 +1,39 @@
+.todo_wrapp {
+  height: 100%;
+}
+
 .wrapper {
   align-items: center;
   display: flex;
   justify-content: space-between;
 }
 
-.title {
-  font-size: 1.5rem;
+.box {
+  overflow-y: scroll;
+  height: calc(100% - 130px);
+}
+
+.box::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 15px;
+}
+
+.box::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.box::-webkit-scrollbar {
+  width: 6px;
+}
+
+@media only screen and (min-device-width : 582px) and (max-device-width : 1024px) and (orientation : landscape) {
+  /* .box {
+    height: calc(100% - 130px);
+  } */
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 742px) and (orientation : portrait) {
+  .box {
+    height: calc(100% - 100px);
+  }
 }
