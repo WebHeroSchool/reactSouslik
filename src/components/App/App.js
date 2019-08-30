@@ -14,12 +14,10 @@ class App extends React.Component {
   }
 
   render() {
-    const click = () => {
-      setTimeout( () => {
-        this.setState({
-          isCheck: document.location.href.includes('/todo')
-        });
-      }, 100);      
+    const click = () => { setTimeout( () => {
+      this.setState({
+        isCheck: document.location.href.includes('/todo')
+      }); }, 100);      
     };
 
     return (

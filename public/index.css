@@ -1,7 +1,12 @@
 body {
+  color: #555;
   background: #E5E5E5;
   margin: 0;
   padding: 0 .5rem;
+}
+
+a:focus {
+  outline: none;
 }
 
 .MuiOutlinedInput-notchedOutline {

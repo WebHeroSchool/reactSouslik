@@ -143,12 +143,12 @@ class Todo extends React.Component {
     return ( <div className={styles.todo_wrapp}>
       <Card >
         <CardContent >
-            <Footer countAll = {this.state.count}
-                    countDone = {this.state.countDone}
-                    countNotDone = {this.state.countNotDone}
-                    onClickSort = {this.onClickSort}
-                    isActive = {this.state.isActive}
-            />
+          <Footer countAll = {this.state.count}
+                  countDone = {this.state.countDone}
+                  countNotDone = {this.state.countNotDone}
+                  onClickSort = {this.onClickSort}
+                  isActive = {this.state.isActive}
+          />
           <div className = {styles.box} >
             <ItemList id_0 = {this.state.id_0}
                       items = {this.state.items}

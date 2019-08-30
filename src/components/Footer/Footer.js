@@ -2,19 +2,15 @@ import React from 'react';
 import classnames from 'classnames';
 import styles from './Footer.module.css';
 
-const date = new Date();
 class Footer extends React.Component {
-  componentDidMount() {
-    console.log(`${date.getHours()}:${date.getMinutes()} Монтирование компонента Footer`);
-  }
 
   render() {
     const {countAll, countDone, countNotDone, onClickSort, isActive} = this.props;
 
     return (<footer className={styles.footer}>
       <h1 className = {
-              styles.title
-            }>Список <span className={styles.visible}>моих </span>дел</h1>
+          styles.title
+        }>Список <span className={styles.visible}>моих </span>дел</h1>
       <nav className={styles.nav}>
         <div className={classnames({
           [styles.text]: true,

@@ -26,7 +26,6 @@ class About extends React.Component {
         isLoading: false,
         fetchSucces: true
       });
-
     })
     .catch(err => {
       this.setState({
@@ -75,8 +74,6 @@ class About extends React.Component {
             <span>+7 (953) 518-90-08</span>
             </a>
           </div>
-            
-          
           <div className={styles.social}>
             <a href="https://t.me/CrazySouslik" className={styles.social__item} target="_blank" rel="noopener noreferrer">
               <img src="../images/tg.svg" alt="Telegram CrazySouslik`s" className={styles.social__img}/>
@@ -92,7 +89,6 @@ class About extends React.Component {
             </a>
           </div>         
         </header>
-
         <main className={styles.main}>
           {isLoading ? <Preloader /> : 
             <div className={styles.list_wrapper}>
@@ -103,7 +99,6 @@ class About extends React.Component {
                         warningTitle = 'Упс! Что-то пошло не так'
                         warningSubtitle = 'Попробуй загрузить чуть позже...'
                     /> ) :
-
                     <div>
                       { repoList.length === 0 ? ( <div className={styles.error_box}>
                         <Warning
@@ -116,8 +111,7 @@ class About extends React.Component {
                             {repoList.map(repo => (
                               <li key={repo.id} className={styles.itemList}>
                                 <a href={repo.html_url} target="_blank" className={styles.link} rel="noopener noreferrer">
-                                  {repo.name}                                  
-                                
+                                  {repo.name}   
                                 <div className={styles.data_wrapp}>
                                   <div className={styles.row}>
                                     <div className={classnames({
