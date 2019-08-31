@@ -16,15 +16,19 @@ class App extends React.Component {
     isLoading: false
   }
 
-  componentDidMount () {
+  componentWillMount () {
     preloader.classList.add('isHidden');
   }
 
+  componentWillUnmount() {
+    preloader.classList.remove('isHidden');
+  }
+
   render() {
-    const click = () => { setTimeout( () => {
+    const click = () => {setTimeout(() => {
       this.setState({
         isCheck: document.location.href.includes('/todo')
-      }); }, 100);      
+      })}, 100);      
     };
 
     return (

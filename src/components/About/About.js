@@ -10,33 +10,33 @@ const octokit = new Octokit();
 let src_avatar = "images/crazysouslik1.png";
 class About extends React.Component {
   state = {
-    isLoading: true,
+    isLoad: true,
     repoList: [],
-    userName: 'ChuVo',
-    fetchSucces: false,
+    user: 'ChuVo',
+    fetchWell: false,
     error: ''
   }
 
-  componentDidMount() {
+  componentWillMount() {
     octokit.repos.listForUser({
-      username: this.state.userName,
+      username: this.state.user,
     }).then(({ data }) => {
       this.setState({
         repoList: data,
-        isLoading: false,
-        fetchSucces: true
+        isLoad: false,
+        fetchWell: true
       });
     })
     .catch(err => {
       this.setState({
         error: err,
-        isLoading: false,
-        fetchSucces: false
+        isLoad: false,
+        fetchWell: false
       });
     });
 
     octokit.users.getByUsername({
-      username: this.state.userName
+      username: this.state.user
     })
     .then(result =>{      
       src_avatar = result.data.avatar_url;
@@ -47,7 +47,7 @@ class About extends React.Component {
   }
 
   render() {
-    const { isLoading, repoList, fetchSucces, name } = this.state;
+    const { isLoad, repoList, fetchWell, name } = this.state;
 
     return (
       <CardContent className={styles.p_0}>
@@ -94,20 +94,20 @@ class About extends React.Component {
           </div>         
         </header>
         <main className={styles.main}>
-          {isLoading ? <Preloader /> : 
+          {isLoad ? <Preloader /> : 
             <div className={styles.list_wrapper}>
-                { !isLoading &&
+                { !isLoad &&
                 <div>
-                  {!fetchSucces ?
+                  {!fetchWell ?
                     ( <Warning
-                        warningTitle = 'Упс! Что-то пошло не так'
-                        warningSubtitle = 'Попробуй загрузить чуть позже...'
+                      Title = 'Упс! Что-то пошло не так'
+                      Subtitle = 'Попробуй загрузить чуть позже...'
                     /> ) :
                     <div>
                       { repoList.length === 0 ? ( <div className={styles.error_box}>
                         <Warning
-                          warningTitle = 'Репозитории отсутствуют'
-                          warningSubtitle = 'Добавьте как минимум один репозиторий на github.com'
+                          Title = 'Репозитории отсутствуют'
+                          Subtitle = 'Добавьте как минимум один репозиторий на github.com'
                         />
                         </div> ) : 
                       ( <div>
@@ -116,32 +116,31 @@ class About extends React.Component {
                               <li key={repo.id} className={styles.itemList}>
                                 <a href={repo.html_url} target="_blank" className={styles.link} rel="noopener noreferrer">
                                   {repo.name}   
-                                <div className={styles.data_wrapp}>
-                                  <div className={styles.row}>
-                                    <div className={classnames({
-                                      [styles.repo_lang_indic]:true,
-                                      [styles.lang_html]: repo.language === 'HTML',
-                                      [styles.lang_js]: repo.language === 'JavaScript'
-                                    })
-                                      }></div>
-                                    <span className={styles.repo_lang}>{repo.language}</span>
-                                    <div className={classnames({
+                                  <div className={styles.data_wrapp}>
+                                    <div className={styles.row}>
+                                      <div className={classnames({
+                                        [styles.repo_lang_indic]:true,
+                                        [styles.lang_html]: repo.language === 'HTML',
+                                        [styles.lang_js]: repo.language === 'JavaScript'
+                                      })}></div>
+                                      <span className={styles.repo_lang}>{repo.language}</span>
+                                      <div className={classnames({
                                         [styles.data_icon]: true,
                                         [styles.data_icon_visible]: repo.stargazers_count !== 0 })
                                       }>
                                         <img src="images/star.svg" alt="is Like" />
-                                        {repo.stargazers_count}                                    
-                                    </div>
-                                    <div className={classnames({
+                                        {repo.stargazers_count}
+                                      </div>
+                                      <div className={classnames({
                                         [styles.data_icon]: true,
                                         [styles.data_icon_visible]: repo.forks_count !== 0 })
                                       }>
                                         <img src="images/follow.svg" alt="is follow" />
                                         {repo.forks_count}                                    
+                                      </div>
                                     </div>
+                                    <div>{getUpdate_at(repo.updated_at)} </div>
                                   </div>
-                                  <div>{getUpdate_at(repo.updated_at)} </div>
-                                </div>
                                 </a>                                
                               </li>
                             ))}
@@ -177,7 +176,6 @@ function getUpdate_at(i) {
   }
   
   month = month[+i.substring(5,7)];
-
   i = i.substring(0, 10).split('-').reverse().join(' ');
   i = i.substring(0,2) + " " + month + " " + i.substring(6);
   

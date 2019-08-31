@@ -6,14 +6,15 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import styles from './Todo.module.css';
 import Warning from '../Warning/Warning';
+
 class Todo extends React.Component {
   state = {
+    id_0: 0,
     items: [],
     count: 0,
     countDone: 0,
     countNotDone: 0,
-    isActive: 'all',
-    id_0: 0
+    isActive: 'all'    
   };
 
   onClickAdd = (value) => {
@@ -135,8 +136,8 @@ class Todo extends React.Component {
   };
 
   render() {
-    const warningTitle = 'Вы еще не добавили ни одной задачи',
-          warningSubtitle = 'Сделайте это прямо сейчас!';
+    const Title = 'Вы еще не добавили ни одной задачи',
+          Subtitle = 'Сделайте это прямо сейчас!';
 
     return ( <div className={styles.todo_wrapp}>
       <Card >
@@ -145,9 +146,9 @@ class Todo extends React.Component {
                   countDone = {this.state.countDone}
                   countNotDone = {this.state.countNotDone}
                   onClickSort = {this.onClickSort}
-                  isActive = {this.state.isActive}
+                  isActive = {this.state.isActive}                  
           />
-          <div className = {styles.box} >
+          <div className = {styles.box}>
             <ItemList id_0 = {this.state.id_0}
                       items = {this.state.items}
                       onClickDone = {this.onClickDone}
@@ -155,8 +156,8 @@ class Todo extends React.Component {
             />
             <Warning
               count = {this.state.count}
-              warningTitle = {warningTitle}
-              warningSubtitle = {warningSubtitle} />
+              Title = {Title}
+              Subtitle = {Subtitle} />
           </div>
           <InputItem onClickAdd = {this.onClickAdd} />
         </CardContent >
