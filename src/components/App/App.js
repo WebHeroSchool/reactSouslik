@@ -8,9 +8,16 @@ import styles from './App.module.css';
 import classnames from 'classnames';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
+const preloader = document.getElementById('preloader');
+
 class App extends React.Component {
   state = {
-    isCheck: document.location.href.includes('/todo')
+    isCheck: document.location.href.includes('/todo'),
+    isLoading: false
+  }
+
+  componentDidMount () {
+    preloader.classList.add('isHidden');
   }
 
   render() {
@@ -21,7 +28,7 @@ class App extends React.Component {
     };
 
     return (
-      <Router>
+      <Router>        
         <div className={styles.App}>
           <nav className={styles.sidebar}>
             <MenuList className={styles.sidebar_nav}>

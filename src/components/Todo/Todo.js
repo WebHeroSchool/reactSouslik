@@ -6,7 +6,6 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import styles from './Todo.module.css';
 import Warning from '../Warning/Warning';
-
 class Todo extends React.Component {
   state = {
     items: [],
@@ -81,7 +80,6 @@ class Todo extends React.Component {
 
       return newItem;
     });
-
     this.setState({
       items: newItemList,
       countDone: getCountDon(newItemList),

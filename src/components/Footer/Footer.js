@@ -8,9 +8,7 @@ class Footer extends React.Component {
     const {countAll, countDone, countNotDone, onClickSort, isActive} = this.props;
 
     return (<footer className={styles.footer}>
-      <h1 className = {
-          styles.title
-        }>Список <span className={styles.visible}>моих </span>дел</h1>
+      <h1 className = {styles.title}>Список <span className={styles.visible}>моих </span>дел</h1>
       <nav className={styles.nav}>
         <div className={classnames({
           [styles.text]: true,
