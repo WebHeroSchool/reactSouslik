@@ -61,8 +61,8 @@ class About extends React.Component {
             <h1 className={styles.title}>Владимир Сысоев</h1>
           </div>
           <div className={styles.about_text}>
-             <span className={styles.text}>Junior Frontend-разработчик.<br />
-              HTML-верстальщик для ваших проектов</span>
+             <span className={styles.text}>Junior Frontend-разработчик<br />
+              в поиске интересных проектов</span>
           </div>
           <div className={styles.contacts}>
             <a href="mailto:crazysouslik@ya.ru" className={styles.contacts_link}>
