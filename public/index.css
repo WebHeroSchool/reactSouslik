@@ -14,6 +14,7 @@ a:focus {
 }
 .MuiButton-containedPrimary {
   border-radius: 50% !important;
+  width: 36px;
 }
 
 .MuiButton-root {

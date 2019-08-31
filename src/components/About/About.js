@@ -66,12 +66,16 @@ class About extends React.Component {
           </div>
           <div className={styles.contacts}>
             <a href="mailto:crazysouslik@ya.ru" className={styles.contacts_link}>
-              <img src="../images/email.svg"alt="E-mail CrazySouslik`s" className={styles.contact__img} />
+              <div>
+                <img src="../images/email.svg"alt="E-mail CrazySouslik`s" className={styles.contact__img} />
+              </div>              
               <span>crazysouslik@ya.ru</span>
             </a>
             <a href="tel:+79535189008" className={styles.contacts_link}>
-            <img src="../images/tg.svg" alt="Telegram CrazySouslik`s" className={styles.contact__img} />
-            <span>+7 (953) 518-90-08</span>
+              <div className={styles.contact__img}>
+                <img src="../images/tg.svg" alt="Telegram CrazySouslik`s"  />
+              </div>            
+              <span>+7 (953) 518-90-08</span>
             </a>
           </div>
           <div className={styles.social}>
