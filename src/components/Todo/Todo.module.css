@@ -26,6 +26,12 @@
   width: 6px;
 }
 
+@media only screen and (min-device-width : 582px) and (max-device-width : 1024px) and (orientation : landscape) {
+  /* .box {
+    height: calc(100% - 130px);
+  } */
+}
+
 @media only screen and (min-device-width : 320px) and (max-device-width : 742px) and (orientation : portrait) {
   .box {
     height: calc(100% - 100px);
