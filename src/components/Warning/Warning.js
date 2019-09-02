@@ -4,22 +4,30 @@ import styles from './Warning.module.css';
 
 class Warning extends React.Component {
 
+  componentDidMount() {
+    console.log('Нет введенных заданий');
+  }
+
+  componentWillUnmount() {
+    console.log('введена новая задача');
+  }
+
   render() {
-    const { count, Title, Subtitle } = this.props;
+    const { count, warningTitle, warningSubtitle } = this.props;
 
     return (<div className={
       classnames({
         [styles.Warning]: true,
-        [styles.hidden]: count > 0
+        [styles.hidden]: count > 0,
       })
-    }> 
-      <img className={styles.pictur} src='images/no-task.png' alt={Title}/> 
+    }>
+      <img className={styles.pictur} src='images/no-task.png' alt={warningTitle} />
       <div className={styles.text_wrapper}>
-        <span className={styles.title}>{Title}</span>
-        <span className={styles.subtitle}>{Subtitle}</span>
+        <span className={styles.title}>{warningTitle}</span>
+        <span className={styles.subtitle}>{warningSubtitle}</span>
       </div>      
-    </div>)
-  }
+    </div>);
+  };
 };
 
 export default Warning;

@@ -1,11 +1,7 @@
 .footer {
-  align-items: center;  
-  justify-content: space-between;
-}
-
-.footer,
-.nav {
+  align-items: center;
   display: flex;
+  justify-content: space-between;
 }
 
 .title {
@@ -13,11 +9,11 @@
 }
 
 .nav {
+  display: flex;
   padding-top: 5px;
 }
 
 .text {
-  cursor: pointer;
   padding: 5px 15px;
 }
 

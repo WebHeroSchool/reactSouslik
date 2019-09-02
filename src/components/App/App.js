@@ -8,31 +8,22 @@ import styles from './App.module.css';
 import classnames from 'classnames';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
-const spiner = document.getElementById('spiner');
-
 class App extends React.Component {
   state = {
-    isCheck: document.location.href.includes('/todo'),
-    isLoading: false
-  }
-
-  componentWillMount () {
-    spiner.classList.add('isHidden');
-  }
-
-  componentWillUnmount() {
-    spiner.classList.remove('isHidden');
+    isCheck: document.location.href.includes('/todo')
   }
 
   render() {
-    const click = () => {setTimeout(() => {
-      this.setState({
-        isCheck: document.location.href.includes('/todo')
-      })}, 100);      
+    const click = () => {
+      setTimeout( () => {
+        this.setState({
+          isCheck: document.location.href.includes('/todo')
+        });
+      }, 100);      
     };
 
     return (
-      <Router>        
+      <Router>
         <div className={styles.App}>
           <nav className={styles.sidebar}>
             <MenuList className={styles.sidebar_nav}>
