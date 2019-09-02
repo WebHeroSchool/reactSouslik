@@ -9,12 +9,12 @@ import Warning from '../Warning/Warning';
 
 class Todo extends React.Component {
   state = {
+    id0: 0,
     items: [],
     count: 0,
     countDone: 0,
     countNotDone: 0,
-    isActive: 'all',
-    id_0: 0
+    isActive: 'all'    
   };
 
   onClickAdd = (value) => {
@@ -49,7 +49,7 @@ class Todo extends React.Component {
         countNotDone: ++state.countNotDone
       }));
     } else {
-      let id_0 = this.state.items[0].id;
+      let id0 = this.state.items[0].id;
       const newItemList = this.state.items.map(item => {
         const newItem = {
           ...item
@@ -64,7 +64,7 @@ class Todo extends React.Component {
 
       this.setState({
         items: newItemList,
-        id_0: id_0
+        id0: id0
       });
     }
   };
@@ -81,7 +81,6 @@ class Todo extends React.Component {
 
       return newItem;
     });
-
     this.setState({
       items: newItemList,
       countDone: getCountDon(newItemList),
@@ -137,19 +136,19 @@ class Todo extends React.Component {
   };
 
   render() {
-    const warningTitle = 'Вы еще не добавили ни одной задачи',
-          warningSubtitle = 'Сделайте это прямо сейчас!';
+    const Title = 'Вы еще не добавили ни одной задачи',
+          Subtitle = 'Сделайте это прямо сейчас!';
 
     return ( <div className={styles.todo_wrapp}>
       <Card >
         <CardContent >
-            <Footer countAll = {this.state.count}
-                    countDone = {this.state.countDone}
-                    countNotDone = {this.state.countNotDone}
-                    onClickSort = {this.onClickSort}
-                    isActive = {this.state.isActive}
-            />
-          <div className = {styles.box} >
+          <Footer countAll = {this.state.count}
+                  countDone = {this.state.countDone}
+                  countNotDone = {this.state.countNotDone}
+                  onClickSort = {this.onClickSort}
+                  isActive = {this.state.isActive}                  
+          />
+          <div className = {styles.box}>
             <ItemList id_0 = {this.state.id_0}
                       items = {this.state.items}
                       onClickDone = {this.onClickDone}
@@ -157,8 +156,8 @@ class Todo extends React.Component {
             />
             <Warning
               count = {this.state.count}
-              warningTitle = {warningTitle}
-              warningSubtitle = {warningSubtitle} />
+              Title = {Title}
+              Subtitle = {Subtitle} />
           </div>
           <InputItem onClickAdd = {this.onClickAdd} />
         </CardContent >

@@ -1,43 +1,42 @@
 import React from 'react';
 import CardContent from '@material-ui/core/CardContent';
-import Preloader from '../Preloader/Preloader';
+import Spiner from '../Spiner/Spiner';
 import Octokit from '@octokit/rest';
 import styles from './About.module.css';
 import Warning from '../Warning/Warning';
 import classnames from 'classnames';
 
 const octokit = new Octokit();
-let src_avatar = "images/crazysouslik1.png";
+let src_avatar = "images/logo1.png";
 class About extends React.Component {
   state = {
-    isLoading: true,
+    isLoad: true,
     repoList: [],
-    userName: 'ChuVo',
-    fetchSucces: false,
+    user: 'ChuVo',
+    fetchWell: false,
     error: ''
   }
 
-  componentDidMount() {
+  componentWillMount() {
     octokit.repos.listForUser({
-      username: this.state.userName,
+      username: this.state.user,
     }).then(({ data }) => {
       this.setState({
         repoList: data,
-        isLoading: false,
-        fetchSucces: true
+        isLoad: false,
+        fetchWell: true
       });
-
     })
     .catch(err => {
       this.setState({
         error: err,
-        isLoading: false,
-        fetchSucces: false
+        isLoad: false,
+        fetchWell: false
       });
     });
 
     octokit.users.getByUsername({
-      username: this.state.userName
+      username: this.state.user
     })
     .then(result =>{      
       src_avatar = result.data.avatar_url;
@@ -48,7 +47,7 @@ class About extends React.Component {
   }
 
   render() {
-    const { isLoading, repoList, fetchSucces, name } = this.state;
+    const { isLoad, repoList, fetchWell, name } = this.state;
 
     return (
       <CardContent className={styles.p_0}>
@@ -62,21 +61,23 @@ class About extends React.Component {
             <h1 className={styles.title}>Владимир Сысоев</h1>
           </div>
           <div className={styles.about_text}>
-             <span className={styles.text}>Junior Frontend-разработчик.<br />
-              HTML-верстальщик для ваших проектов</span>
+             <span className={styles.text}>Junior Frontend-разработчик<br />
+              в поиске интересных проектов</span>
           </div>
           <div className={styles.contacts}>
             <a href="mailto:crazysouslik@ya.ru" className={styles.contacts_link}>
-              <img src="../images/email.svg"alt="E-mail CrazySouslik`s" className={styles.contact__img} />
+              <div>
+                <img src="../images/email.svg"alt="E-mail CrazySouslik`s" className={styles.contact__img} />
+              </div>              
               <span>crazysouslik@ya.ru</span>
             </a>
             <a href="tel:+79535189008" className={styles.contacts_link}>
-            <img src="../images/tg.svg" alt="Telegram CrazySouslik`s" className={styles.contact__img} />
-            <span>+7 (953) 518-90-08</span>
+              <div className={styles.contact__img}>
+                <img src="../images/tg.svg" alt="Telegram CrazySouslik`s" className={styles.imgTransition}  />
+              </div>            
+              <span>+7 (953) 518-90-08</span>
             </a>
           </div>
-            
-          
           <div className={styles.social}>
             <a href="https://t.me/CrazySouslik" className={styles.social__item} target="_blank" rel="noopener noreferrer">
               <img src="../images/tg.svg" alt="Telegram CrazySouslik`s" className={styles.social__img}/>
@@ -92,23 +93,21 @@ class About extends React.Component {
             </a>
           </div>         
         </header>
-
         <main className={styles.main}>
-          {isLoading ? <Preloader /> : 
+          {isLoad ? <Spiner /> : 
             <div className={styles.list_wrapper}>
-                { !isLoading &&
+                { !isLoad &&
                 <div>
-                  {!fetchSucces ?
+                  {!fetchWell ?
                     ( <Warning
-                        warningTitle = 'Упс! Что-то пошло не так'
-                        warningSubtitle = 'Попробуй загрузить чуть позже...'
+                      Title = 'Упс! Что-то пошло не так'
+                      Subtitle = 'Попробуй загрузить чуть позже...'
                     /> ) :
-
                     <div>
                       { repoList.length === 0 ? ( <div className={styles.error_box}>
                         <Warning
-                          warningTitle = 'Репозитории отсутствуют'
-                          warningSubtitle = 'Добавьте как минимум один репозиторий на github.com'
+                          Title = 'Репозитории отсутствуют'
+                          Subtitle = 'Добавьте как минимум один репозиторий на github.com'
                         />
                         </div> ) : 
                       ( <div>
@@ -116,34 +115,32 @@ class About extends React.Component {
                             {repoList.map(repo => (
                               <li key={repo.id} className={styles.itemList}>
                                 <a href={repo.html_url} target="_blank" className={styles.link} rel="noopener noreferrer">
-                                  {repo.name}                                  
-                                
-                                <div className={styles.data_wrapp}>
-                                  <div className={styles.row}>
-                                    <div className={classnames({
-                                      [styles.repo_lang_indic]:true,
-                                      [styles.lang_html]: repo.language === 'HTML',
-                                      [styles.lang_js]: repo.language === 'JavaScript'
-                                    })
-                                      }></div>
-                                    <span className={styles.repo_lang}>{repo.language}</span>
-                                    <div className={classnames({
+                                  {repo.name}   
+                                  <div className={styles.data_wrapp}>
+                                    <div className={styles.row}>
+                                      <div className={classnames({
+                                        [styles.repo_lang_indic]:true,
+                                        [styles.lang_html]: repo.language === 'HTML',
+                                        [styles.lang_js]: repo.language === 'JavaScript'
+                                      })}></div>
+                                      <span className={styles.repo_lang}>{repo.language}</span>
+                                      <div className={classnames({
                                         [styles.data_icon]: true,
                                         [styles.data_icon_visible]: repo.stargazers_count !== 0 })
                                       }>
                                         <img src="images/star.svg" alt="is Like" />
-                                        {repo.stargazers_count}                                    
-                                    </div>
-                                    <div className={classnames({
+                                        {repo.stargazers_count}
+                                      </div>
+                                      <div className={classnames({
                                         [styles.data_icon]: true,
                                         [styles.data_icon_visible]: repo.forks_count !== 0 })
                                       }>
                                         <img src="images/follow.svg" alt="is follow" />
                                         {repo.forks_count}                                    
+                                      </div>
                                     </div>
+                                    <div>{getUpdate_at(repo.updated_at)} </div>
                                   </div>
-                                  <div>{getUpdate_at(repo.updated_at)} </div>
-                                </div>
                                 </a>                                
                               </li>
                             ))}
@@ -179,7 +176,6 @@ function getUpdate_at(i) {
   }
   
   month = month[+i.substring(5,7)];
-
   i = i.substring(0, 10).split('-').reverse().join(' ');
   i = i.substring(0,2) + " " + month + " " + i.substring(6);
   

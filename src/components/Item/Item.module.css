@@ -3,8 +3,14 @@
   justify-content: space-between;
   width: 100%;
 }
+
+.content {
+  display: flex;
+  align-items: center;
+}
 .item {
   font-weight: 500;
+  line-height: 1.2;
 }
 
 .done {

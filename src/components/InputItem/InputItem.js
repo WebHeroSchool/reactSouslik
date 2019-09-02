@@ -5,10 +5,6 @@ import Button from '@material-ui/core/Button';
 import styles from './InputItem.module.css';
 
 class InputItem extends React.Component {
-  componentDidMount() {
-    console.log("смонтировано поле ввода");
-  }
-
   state = {
     error: false,
     label: 'Давай добавим новую задачу',
@@ -51,9 +47,7 @@ class InputItem extends React.Component {
         color="primary"
         onClick={this.onClickClearField}
         variant="contained"
-      >
-        +
-      </Button>
+      >+</Button>
     </Grid>);
   }
 }

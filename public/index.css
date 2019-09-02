@@ -1,35 +1,39 @@
 body {
+  color: #555;
   background: #E5E5E5;
   margin: 0;
   padding: 0 .5rem;
+  height: 100vh;
 }
 
-.MuiOutlinedInput-notchedOutline {
-  border-radius: 30px !important;
+.spiner {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  transform: translate(-50%, 50%);
+  z-index: 99;
 }
+
+.isHidden {display: none;}
+
+a:focus {outline: none;}
+
+.MuiOutlinedInput-notchedOutline {border-radius: 30px !important;}
+
 .MuiButton-containedPrimary {
   border-radius: 50% !important;
+  width: 36px;
 }
 
-.MuiButton-root {
-  min-width: auto !important;
-}
+.MuiButton-root {min-width: auto !important;}
 
-.MuiFormControl-marginDense {
-  margin: 0 10px 0 0 !important;
-}
+.MuiFormControl-marginDense {margin: 0 10px 0 0 !important;}
 
-.MuiCheckbox-root {
-  color: #3f51b5 !important;
-}
+.MuiCheckbox-root {color: #3f51b5 !important;}
 
 .MuiPaper-root,
-.MuiCardContent-root {
-  height: 100%;
-}
+.MuiCardContent-root {height: 100%;}
 
 @media only screen and (min-device-width : 320px) and (max-device-width : 742px) and (orientation : portrait) {
-  .MuiFormLabel-root {
-    font-size: 13px !important;
-  }
+  .MuiFormLabel-root {font-size: 13px !important;}
 }

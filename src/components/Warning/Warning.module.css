@@ -1,19 +1,18 @@
 .Warning {
   align-items: center;
-  display: flex;
-  flex-direction: column;
   justify-content: center;
   height: 100%;
   margin: 0 auto;
 }
 
-.hidden {
-  display: none;
-}
-
+.Warning,
 .text_wrapper {
   display: flex;
   flex-direction: column;
+}
+
+.hidden {
+  display: none;
 }
 
 .title {
