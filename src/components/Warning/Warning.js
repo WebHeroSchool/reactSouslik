@@ -18,7 +18,7 @@ class Warning extends React.Component {
         <span className={styles.title}>{Title}</span>
         <span className={styles.subtitle}>{Subtitle}</span>
       </div>      
-    </div>);
+    </div>)
   }
 };
 

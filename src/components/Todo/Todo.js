@@ -9,7 +9,7 @@ import Warning from '../Warning/Warning';
 
 class Todo extends React.Component {
   state = {
-    id_0: 0,
+    id0: 0,
     items: [],
     count: 0,
     countDone: 0,
@@ -49,7 +49,7 @@ class Todo extends React.Component {
         countNotDone: ++state.countNotDone
       }));
     } else {
-      let id_0 = this.state.items[0].id;
+      let id0 = this.state.items[0].id;
       const newItemList = this.state.items.map(item => {
         const newItem = {
           ...item
@@ -64,7 +64,7 @@ class Todo extends React.Component {
 
       this.setState({
         items: newItemList,
-        id_0: id_0
+        id0: id0
       });
     }
   };

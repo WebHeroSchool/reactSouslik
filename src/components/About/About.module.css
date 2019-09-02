@@ -75,6 +75,10 @@
   width: 1.3rem;
 }
 
+.imgTransition {
+  transform: translate(-5%);
+}
+
 .contact__img:hover {
   background: rgb(222, 230, 250);
 }

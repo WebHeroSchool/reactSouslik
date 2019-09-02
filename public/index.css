@@ -6,7 +6,7 @@ body {
   height: 100vh;
 }
 
-.preloader {
+.spiner {
   position: absolute;
   left: 50%;
   bottom: 50%;

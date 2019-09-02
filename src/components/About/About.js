@@ -1,13 +1,13 @@
 import React from 'react';
 import CardContent from '@material-ui/core/CardContent';
-import Preloader from '../Preloader/Preloader';
+import Spiner from '../Spiner/Spiner';
 import Octokit from '@octokit/rest';
 import styles from './About.module.css';
 import Warning from '../Warning/Warning';
 import classnames from 'classnames';
 
 const octokit = new Octokit();
-let src_avatar = "images/crazysouslik1.png";
+let src_avatar = "images/logo1.png";
 class About extends React.Component {
   state = {
     isLoad: true,
@@ -73,7 +73,7 @@ class About extends React.Component {
             </a>
             <a href="tel:+79535189008" className={styles.contacts_link}>
               <div className={styles.contact__img}>
-                <img src="../images/tg.svg" alt="Telegram CrazySouslik`s"  />
+                <img src="../images/tg.svg" alt="Telegram CrazySouslik`s" className={styles.imgTransition}  />
               </div>            
               <span>+7 (953) 518-90-08</span>
             </a>
@@ -94,7 +94,7 @@ class About extends React.Component {
           </div>         
         </header>
         <main className={styles.main}>
-          {isLoad ? <Preloader /> : 
+          {isLoad ? <Spiner /> : 
             <div className={styles.list_wrapper}>
                 { !isLoad &&
                 <div>

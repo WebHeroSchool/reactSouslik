@@ -8,7 +8,7 @@ import styles from './App.module.css';
 import classnames from 'classnames';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
-const preloader = document.getElementById('preloader');
+const spiner = document.getElementById('spiner');
 
 class App extends React.Component {
   state = {
@@ -17,11 +17,11 @@ class App extends React.Component {
   }
 
   componentWillMount () {
-    preloader.classList.add('isHidden');
+    spiner.classList.add('isHidden');
   }
 
   componentWillUnmount() {
-    preloader.classList.remove('isHidden');
+    spiner.classList.remove('isHidden');
   }
 
   render() {
