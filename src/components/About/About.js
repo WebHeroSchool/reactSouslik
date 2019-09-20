@@ -7,7 +7,7 @@ import Warning from '../Warning/Warning';
 import classnames from 'classnames';
 
 const octokit = new Octokit();
-let src_avatar = 'images/crazysouslik1.png';
+let src_avatar = 'images/logo.png';
 class About extends React.Component {
   state = {
     isLoading: true,
@@ -38,7 +38,7 @@ class About extends React.Component {
     octokit.users.getByUsername({
       username: this.state.userName
     })
-    .then(result =>{      
+    .then(result =>{
       src_avatar = result.data.avatar_url;
       this.setState({
         name: result.data.name
@@ -55,7 +55,7 @@ class About extends React.Component {
           <div className={styles.avatar}>
             <a href='https://crazysouslik.pro' target='_blank' rel='noopener noreferrer'>
               <img src={src_avatar} alt={name} className={styles.avatar__img}/>
-            </a>            
+            </a>
           </div>
           <div className={styles.title_wrapper}>
             <h1 className={styles.title}>Владимир Сысоев</h1>
@@ -73,7 +73,7 @@ class About extends React.Component {
             <img src='../images/tg.svg' alt='Telegram CrazySouslik`s' className={styles.contact__img} />
             <span>+7 (953) 518-90-08</span>
             </a>
-          </div> 
+          </div>
           <div className={styles.social}>
             <a href='https://t.me/CrazySouslik' className={styles.social__item} target='_blank' rel='noopener noreferrer'>
               <img src='../images/tg.svg' alt='Telegram CrazySouslik`s' className={styles.social__img}/>
@@ -87,10 +87,10 @@ class About extends React.Component {
             <a href='https://vk.com/chuiv' className={styles.social__item} target='_blank' rel='noopener noreferrer'>
               <img src='../images/vk.svg' alt='vk CrazySouslik`s' className={styles.social__img}/>
             </a>
-          </div>         
+          </div>
         </header>
         <main className={styles.main}>
-          {isLoading ? <Preloader /> : 
+          {isLoading ? <Preloader /> :
             <div className={styles.list_wrapper}>
                 { !isLoading &&
                 <div>
@@ -106,7 +106,7 @@ class About extends React.Component {
                           warningTitle = 'Репозитории отсутствуют'
                           warningSubtitle = 'Добавьте как минимум один репозиторий на github.com'
                         />
-                        </div> ) : 
+                        </div> ) :
                       ( <div>
                           <ol className={styles.list}>
                             {repoList.map(repo => (
@@ -127,29 +127,29 @@ class About extends React.Component {
                                         [styles.data_icon_visible]: repo.stargazers_count !== 0 })
                                       }>
                                         <img src='images/star.svg' alt='is Like' />
-                                        {repo.stargazers_count}                                    
+                                        {repo.stargazers_count}
                                     </div>
                                     <div className={classnames({
                                       [styles.data_icon]: true,
                                       [styles.data_icon_visible]: repo.forks_count !== 0 })
                                     }>
                                       <img src='images/follow.svg' alt='is follow' />
-                                      {repo.forks_count}                                    
+                                      {repo.forks_count}
                                     </div>
                                   </div>
                                   <div>{getUpdate_at(repo.updated_at)}</div>
                                 </div>
-                                </a>                                
+                                </a>
                               </li>
                             ))}
                           </ol>
                         </div> )
-                      }              
-                    </div>                
+                      }
+                    </div>
                   }
                 </div>
               }
-            </div>            
+            </div>
           }
         </main>
       </CardContent>
@@ -167,16 +167,16 @@ function getUpdate_at(i) {
       up = 'Up ';
 
   if (width <= 470) {
-    month = monthShort;   
+    month = monthShort;
   } else {
     month = monthFull;
     up = 'Update ';
   }
-  
+
   month = month[+i.substring(5,7)];
 
   i = i.substring(0, 10).split('-').reverse().join(' ');
   i = i.substring(0,2) + ' ' + month + ' ' + i.substring(6);
-  
+
   return up + i;
 }

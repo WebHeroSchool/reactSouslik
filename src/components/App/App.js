@@ -19,7 +19,7 @@ class App extends React.Component {
         this.setState({
           isCheck: document.location.href.includes('/todo')
         });
-      }, 100);      
+      }, 100);
     };
 
     return (

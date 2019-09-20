@@ -6,7 +6,7 @@ import styles from './InputItem.module.css';
 
 class InputItem extends React.Component {
   componentDidMount() {
-    console.log("смонтировано поле ввода");
+    console.log('смонтировано поле ввода');
   }
 
   state = {
@@ -38,18 +38,18 @@ class InputItem extends React.Component {
       <TextField
         className={styles.TextField}
         error={this.state.error}
-        id="outlined-dense"        
+        id='outlined-dense'        
         label={this.state.label}
-        margin="dense"
+        margin='dense'
         onChange={event => this.setState({ inputValue: event.target.value })}
         value={this.state.inputValue}
-        variant="outlined"          
+        variant='outlined'          
       />
       <Button        
         className={styles.Button}
-        color="primary"
+        color='primary'
         onClick={this.onClickClearField}
-        variant="contained"
+        variant='contained'
       >
         +
       </Button>
