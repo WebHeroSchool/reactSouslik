@@ -25,7 +25,7 @@ class About extends React.Component {
         repoList: data,
         isLoading: false,
         fetchSucces: true
-      });
+      });console.log(data)
     })
     .catch(err => {
       this.setState({
@@ -76,7 +76,7 @@ class About extends React.Component {
           </div>
           <div className={styles.social}>
             <a href='https://t.me/CrazySouslik' className={styles.social__item} target='_blank' rel='noopener noreferrer'>
-              <img src='../images/tg.svg' alt='Telegram CrazySouslik`s' className={styles.social__img}/>
+              <img src='../images/tg.svg' alt='Telegram CrazySouslik`s' className={classnames({[styles.social__img]:true,[styles.social__img_tg]:true})}/>
             </a>
             <a href='https://github.com/ChuVo' className={styles.social__item} target='_blank' rel='noopener noreferrer'>
               <img src='../images/git.svg' alt='GitHub CrazySouslik`s' className={styles.social__img}/>
@@ -173,7 +173,7 @@ function getUpdate_at(i) {
     up = 'Update ';
   }
 
-  month = month[+i.substring(5,7)];
+  month = month[+i.substring(5,7) - 1];
 
   i = i.substring(0, 10).split('-').reverse().join(' ');
   i = i.substring(0,2) + ' ' + month + ' ' + i.substring(6);

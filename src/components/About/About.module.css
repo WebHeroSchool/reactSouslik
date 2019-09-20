@@ -64,7 +64,7 @@
 
 .contact__img {
   padding: 5px;
-  border-radius: 50%;
+  border-radius: 30%;
   transition: .2s;
 }
 
@@ -102,6 +102,10 @@
 
 .social__img {
   margin: 0 auto;
+}
+
+.social__img_tg {
+  transform: translateX(-7%);
 }
 
 .main {
@@ -206,6 +210,7 @@
 .link {
   color:#444;
   display: block;
+  cursor: pointer;
   font-weight: 700;
   text-decoration: none;
 }
@@ -237,6 +242,7 @@
 }
 
 .repo_lang {
+  font-weight: 500;
   margin-right: 5px;
 }
 

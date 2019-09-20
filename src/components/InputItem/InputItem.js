@@ -1,7 +1,6 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 import styles from './InputItem.module.css';
 
 class InputItem extends React.Component {
@@ -45,14 +44,12 @@ class InputItem extends React.Component {
         value={this.state.inputValue}
         variant='outlined'          
       />
-      <Button        
-        className={styles.Button}
-        color='primary'
+      <button        
+        className={styles.button}
         onClick={this.onClickClearField}
-        variant='contained'
       >
         +
-      </Button>
+      </button>
     </Grid>);
   }
 }

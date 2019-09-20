@@ -13,7 +13,7 @@ class Item extends React.Component {
 
     return (
       <div className={styles.wrapper}>
-        <div>
+        <div className={styles.wrap}>
           <Checkbox
             color='primary'
             checked={isDone}
