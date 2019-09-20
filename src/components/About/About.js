@@ -1,42 +1,45 @@
 import React from 'react';
 import CardContent from '@material-ui/core/CardContent';
-import Spiner from '../Spiner/Spiner';
+import Preloader from '../Preloader/Preloader';
 import Octokit from '@octokit/rest';
 import styles from './About.module.css';
 import Warning from '../Warning/Warning';
 import classnames from 'classnames';
 
 const octokit = new Octokit();
+
 let src_avatar = 'images/logo1.png';
+
 class About extends React.Component {
   state = {
-    isLoad: true,
+    isLoading: true,
     repoList: [],
-    user: 'ChuVo',
-    fetchWell: false,
+    userName: 'ChuVo',
+    fetchSucces: false,
     error: ''
   };
 
-  componentWillMount() {
+  componentDidMount() {
     octokit.repos.listForUser({
       username: this.state.user,
     }).then(( {data} ) => {
       this.setState({
         repoList: data,
-        isLoad: false,
-        fetchWell: true
+        isLoading: false,
+        fetchSucces: true
       });
+
     })
     .catch(err => {
       this.setState({
         error: err,
-        isLoad: false,
-        fetchWell: false
+        isLoading: false,
+        fetchSucces: false
       });
     });
 
     octokit.users.getByUsername({
-      username: this.state.user
+      username: this.state.userName
     })
     .then(result => {      
       src_avatar = result.data.avatar_url;
@@ -47,7 +50,7 @@ class About extends React.Component {
   };
 
   render() {
-    const { isLoad, repoList, fetchWell, name } = this.state;
+    const { isLoading, repoList, fetchSucces, name } = this.state;
 
     return (
       <CardContent className={styles.p_0}>
@@ -61,8 +64,8 @@ class About extends React.Component {
             <h1 className={styles.title}>Владимир Сысоев</h1>
           </div>
           <div className={styles.about_text}>
-             <span className={styles.text}>Junior Frontend-разработчик<br />
-              в поиске интересных проектов</span>
+             <span className={styles.text}>Junior Frontend-разработчик.<br />
+              HTML-верстальщик для ваших проектов</span>
           </div>
           <div className={styles.contacts}>
             <a href='mailto:crazysouslik@ya.ru' className={styles.contacts_link}>
@@ -78,6 +81,7 @@ class About extends React.Component {
               <span>+7 (953) 518-90-08</span>
             </a>
           </div>
+    
           <div className={styles.social}>
             <a href='https://t.me/CrazySouslik' className={styles.social__item} target='_blank' rel='noopener noreferrer'>
               <img src='../images/tg.svg' alt='Telegram CrazySouslik`s' className={styles.social__img}/>
@@ -93,21 +97,23 @@ class About extends React.Component {
             </a>
           </div>         
         </header>
+
         <main className={styles.main}>
-          {isLoad ? <Spiner /> : 
+          {isLoading ? <Preloader /> : 
             <div className={styles.list_wrapper}>
-                { !isLoad &&
+                { !isLoading &&
                 <div>
-                  {!fetchWell ?
+                  {!fetchSucces ?
                     ( <Warning
-                      Title = 'Упс! Что-то пошло не так'
-                      Subtitle = 'Попробуй загрузить чуть позже...'
+                        warningTitle = 'Упс! Что-то пошло не так'
+                        warningSubtitle = 'Попробуй загрузить чуть позже...'
                     /> ) :
+
                     <div>
                       { repoList.length === 0 ? ( <div className={styles.error_box}>
                         <Warning
-                          Title = 'Репозитории отсутствуют'
-                          Subtitle = 'Добавьте как минимум один репозиторий на github.com'
+                          warningTitle = 'Репозитории отсутствуют'
+                          warningSubtitle = 'Добавьте как минимум один репозиторий на github.com'
                         />
                         </div> ) : 
                       ( <div>
@@ -137,10 +143,10 @@ class About extends React.Component {
                                       }>
                                         <img src='images/follow.svg' alt='is follow' />
                                         {repo.forks_count}                                    
-                                      </div>
                                     </div>
-                                    <div>{getUpdate_at(repo.updated_at)} </div>
                                   </div>
+                                  <div>{getUpdate_at(repo.updated_at)} </div>
+                                </div>
                                 </a>                                
                               </li>
                             ))}
@@ -176,6 +182,7 @@ function getUpdate_at(i) {
   }
   
   month = month[+i.substring(5,7)];
+
   i = i.substring(0, 10).split('-').reverse().join(' ');
   i = i.substring(0,2) + ' ' + month + ' ' + i.substring(6);
   

@@ -54,7 +54,8 @@
 }
 
 .hintDown:before {
-  top: -5px;  
+  top: -5px;
+  
 }
 
 .hintUp:before {  
