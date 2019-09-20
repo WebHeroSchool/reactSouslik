@@ -7,7 +7,7 @@ import Warning from '../Warning/Warning';
 import classnames from 'classnames';
 
 const octokit = new Octokit();
-let src_avatar = "images/logo1.png";
+let src_avatar = 'images/logo1.png';
 class About extends React.Component {
   state = {
     isLoad: true,
@@ -15,12 +15,12 @@ class About extends React.Component {
     user: 'ChuVo',
     fetchWell: false,
     error: ''
-  }
+  };
 
   componentWillMount() {
     octokit.repos.listForUser({
       username: this.state.user,
-    }).then(({ data }) => {
+    }).then(( {data} ) => {
       this.setState({
         repoList: data,
         isLoad: false,
@@ -38,13 +38,13 @@ class About extends React.Component {
     octokit.users.getByUsername({
       username: this.state.user
     })
-    .then(result =>{      
+    .then(result => {      
       src_avatar = result.data.avatar_url;
       this.setState({
         name: result.data.name
       });
     });
-  }
+  };
 
   render() {
     const { isLoad, repoList, fetchWell, name } = this.state;
@@ -53,7 +53,7 @@ class About extends React.Component {
       <CardContent className={styles.p_0}>
         <header className={styles.header}>
           <div className={styles.avatar}>
-            <a href="https://crazysouslik.pro" target="_blank" rel="noopener noreferrer">
+            <a href='https://crazysouslik.pro' target='_blank' rel='noopener noreferrer'>
               <img src={src_avatar} alt={name} className={styles.avatar__img}/>
             </a>            
           </div>
@@ -65,31 +65,31 @@ class About extends React.Component {
               в поиске интересных проектов</span>
           </div>
           <div className={styles.contacts}>
-            <a href="mailto:crazysouslik@ya.ru" className={styles.contacts_link}>
+            <a href='mailto:crazysouslik@ya.ru' className={styles.contacts_link}>
               <div>
-                <img src="../images/email.svg"alt="E-mail CrazySouslik`s" className={styles.contact__img} />
+                <img src='../images/email.svg' alt='E-mail CrazySouslik`s' className={styles.contact__img} />
               </div>              
               <span>crazysouslik@ya.ru</span>
             </a>
-            <a href="tel:+79535189008" className={styles.contacts_link}>
+            <a href='tel:+79535189008' className={styles.contacts_link}>
               <div className={styles.contact__img}>
-                <img src="../images/tg.svg" alt="Telegram CrazySouslik`s" className={styles.imgTransition}  />
+                <img src='../images/tg.svg' alt='Telegram CrazySouslik`s' className={styles.imgTransition}  />
               </div>            
               <span>+7 (953) 518-90-08</span>
             </a>
           </div>
           <div className={styles.social}>
-            <a href="https://t.me/CrazySouslik" className={styles.social__item} target="_blank" rel="noopener noreferrer">
-              <img src="../images/tg.svg" alt="Telegram CrazySouslik`s" className={styles.social__img}/>
+            <a href='https://t.me/CrazySouslik' className={styles.social__item} target='_blank' rel='noopener noreferrer'>
+              <img src='../images/tg.svg' alt='Telegram CrazySouslik`s' className={styles.social__img}/>
             </a>
-            <a href="https://github.com/ChuVo" className={styles.social__item} target="_blank" rel="noopener noreferrer">
-              <img src="../images/git.svg" alt="GitHub CrazySouslik`s" className={styles.social__img}/>
+            <a href='https://github.com/ChuVo' className={styles.social__item} target='_blank' rel='noopener noreferrer'>
+              <img src='../images/git.svg' alt='GitHub CrazySouslik`s' className={styles.social__img}/>
             </a>
-            <a href="https://www.linkedin.com/in/vladimir-sysoev-571a97176/" className={styles.social__item} target="_blank" rel="noopener noreferrer">
-              <img src="../images/in.svg" alt="LinkedIn CrazySouslik`s" className={styles.social__img}/>
+            <a href='https://www.linkedin.com/in/vladimir-sysoev-571a97176' className={styles.social__item} target='_blank' rel='noopener noreferrer'>
+              <img src='../images/in.svg' alt='LinkedIn CrazySouslik`s' className={styles.social__img}/>
             </a>
-            <a href="https://vk.com/chuiv" className={styles.social__item} target="_blank" rel="noopener noreferrer">
-              <img src="../images/vk.svg" alt="vk CrazySouslik`s" className={styles.social__img}/>
+            <a href='https://vk.com/chuiv' className={styles.social__item} target='_blank' rel='noopener noreferrer'>
+              <img src='../images/vk.svg' alt='vk CrazySouslik`s' className={styles.social__img}/>
             </a>
           </div>         
         </header>
@@ -114,7 +114,7 @@ class About extends React.Component {
                           <ol className={styles.list}>
                             {repoList.map(repo => (
                               <li key={repo.id} className={styles.itemList}>
-                                <a href={repo.html_url} target="_blank" className={styles.link} rel="noopener noreferrer">
+                                <a href={repo.html_url} target='_blank' className={styles.link} rel='noopener noreferrer'>
                                   {repo.name}   
                                   <div className={styles.data_wrapp}>
                                     <div className={styles.row}>
@@ -128,14 +128,14 @@ class About extends React.Component {
                                         [styles.data_icon]: true,
                                         [styles.data_icon_visible]: repo.stargazers_count !== 0 })
                                       }>
-                                        <img src="images/star.svg" alt="is Like" />
+                                        <img src='images/star.svg' alt='is Like' />
                                         {repo.stargazers_count}
                                       </div>
                                       <div className={classnames({
                                         [styles.data_icon]: true,
                                         [styles.data_icon_visible]: repo.forks_count !== 0 })
                                       }>
-                                        <img src="images/follow.svg" alt="is follow" />
+                                        <img src='images/follow.svg' alt='is follow' />
                                         {repo.forks_count}                                    
                                       </div>
                                     </div>
@@ -165,7 +165,7 @@ function getUpdate_at(i) {
   const width = window.screen.width,
         monthFull = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November","December"],
         monthShort = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov","Dec"];
-  let month = "",
+  let month = '',
       up = 'Up ';
 
   if (width <= 470) {
@@ -177,7 +177,7 @@ function getUpdate_at(i) {
   
   month = month[+i.substring(5,7)];
   i = i.substring(0, 10).split('-').reverse().join(' ');
-  i = i.substring(0,2) + " " + month + " " + i.substring(6);
+  i = i.substring(0,2) + ' ' + month + ' ' + i.substring(6);
   
   return up + i;
 }
