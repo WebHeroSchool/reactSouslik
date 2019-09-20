@@ -7,6 +7,7 @@ import Warning from '../Warning/Warning';
 import classnames from 'classnames';
 
 const octokit = new Octokit();
+
 let src_avatar = 'images/logo.png';
 class About extends React.Component {
   state = {
@@ -15,7 +16,7 @@ class About extends React.Component {
     userName: 'ChuVo',
     fetchSucces: false,
     error: ''
-  };
+  }
 
   componentDidMount() {
     octokit.repos.listForUser({
@@ -53,7 +54,7 @@ class About extends React.Component {
       <CardContent className={styles.p_0}>
         <header className={styles.header}>
           <div className={styles.avatar}>
-            <a href='https://crazysouslik.pro' target='_blank' rel='noopener noreferrer'>
+            <a href="https://crazysouslik.pro" target="_blank" rel="noopener noreferrer">
               <img src={src_avatar} alt={name} className={styles.avatar__img}/>
             </a>
           </div>
@@ -78,14 +79,14 @@ class About extends React.Component {
             <a href='https://t.me/CrazySouslik' className={styles.social__item} target='_blank' rel='noopener noreferrer'>
               <img src='../images/tg.svg' alt='Telegram CrazySouslik`s' className={classnames({[styles.social__img]:true,[styles.social__img_tg]:true})}/>
             </a>
-            <a href='https://github.com/ChuVo' className={styles.social__item} target='_blank' rel='noopener noreferrer'>
-              <img src='../images/git.svg' alt='GitHub CrazySouslik`s' className={styles.social__img}/>
+            <a href="https://github.com/ChuVo" className={styles.social__item} target="_blank" rel="noopener noreferrer">
+              <img src="../images/git.svg" alt="GitHub CrazySouslik`s" className={styles.social__img}/>
             </a>
-            <a href='https://www.linkedin.com/in/vladimir-sysoev-571a97176' className={styles.social__item} target='_blank' rel='noopener noreferrer'>
-              <img src='../images/in.svg' alt='LinkedIn CrazySouslik`s' className={styles.social__img}/>
+            <a href="https://www.linkedin.com/in/vladimir-sysoev-571a97176/" className={styles.social__item} target="_blank" rel="noopener noreferrer">
+              <img src="../images/in.svg" alt="LinkedIn CrazySouslik`s" className={styles.social__img}/>
             </a>
-            <a href='https://vk.com/chuiv' className={styles.social__item} target='_blank' rel='noopener noreferrer'>
-              <img src='../images/vk.svg' alt='vk CrazySouslik`s' className={styles.social__img}/>
+            <a href="https://vk.com/chuiv" className={styles.social__item} target="_blank" rel="noopener noreferrer">
+              <img src="../images/vk.svg" alt="vk CrazySouslik`s" className={styles.social__img}/>
             </a>
           </div>
         </header>
