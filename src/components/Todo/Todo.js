@@ -60,7 +60,7 @@ class Todo extends React.Component {
         }
 
         return newItem;
-      });      
+      });
 
       this.setState({
         items: newItemList,

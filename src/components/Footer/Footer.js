@@ -20,7 +20,7 @@ class Footer extends React.Component {
           [styles.text]: true,
           [styles.active]: isActive === 'isDone'
         })} onClick={onClickSort} id={'isDone'}>
-          Завершенные <TodoCount count={countDone} el={'isDone'} isActive={isActive} /></div> 
+          Завершенные <TodoCount count={countDone} el={'isDone'} isActive={isActive} /></div>
         <div className={classnames({
             [styles.text]: true,
             [styles.active]: isActive === 'isNotDone'
@@ -31,7 +31,7 @@ class Footer extends React.Component {
           [styles.All]: true,
           [styles.active]: isActive === 'all'
         })} onClick={onClickSort} id={'all'}>Все <TodoCount count={countAll} el={'all'} isActive={isActive} /></div>
-      </nav>      
+      </nav>
     </footer>)
   }
 }
