@@ -7,9 +7,7 @@ import Warning from '../Warning/Warning';
 import classnames from 'classnames';
 
 const octokit = new Octokit();
-
-let src_avatar = 'images/logo1.png';
-
+let src_avatar = 'images/crazysouslik1.png';
 class About extends React.Component {
   state = {
     isLoading: true,
@@ -21,14 +19,13 @@ class About extends React.Component {
 
   componentDidMount() {
     octokit.repos.listForUser({
-      username: this.state.user,
-    }).then(( {data} ) => {
+      username: this.state.userName,
+    }).then( ({data}) => {
       this.setState({
         repoList: data,
         isLoading: false,
         fetchSucces: true
       });
-
     })
     .catch(err => {
       this.setState({
@@ -41,13 +38,13 @@ class About extends React.Component {
     octokit.users.getByUsername({
       username: this.state.userName
     })
-    .then(result => {      
+    .then(result =>{      
       src_avatar = result.data.avatar_url;
       this.setState({
         name: result.data.name
       });
     });
-  };
+  }
 
   render() {
     const { isLoading, repoList, fetchSucces, name } = this.state;
@@ -69,19 +66,14 @@ class About extends React.Component {
           </div>
           <div className={styles.contacts}>
             <a href='mailto:crazysouslik@ya.ru' className={styles.contacts_link}>
-              <div>
-                <img src='../images/email.svg' alt='E-mail CrazySouslik`s' className={styles.contact__img} />
-              </div>              
+              <img src='../images/email.svg'alt='E-mail CrazySouslik`s' className={styles.contact__img} />
               <span>crazysouslik@ya.ru</span>
             </a>
             <a href='tel:+79535189008' className={styles.contacts_link}>
-              <div className={styles.contact__img}>
-                <img src='../images/tg.svg' alt='Telegram CrazySouslik`s' className={styles.imgTransition}  />
-              </div>            
-              <span>+7 (953) 518-90-08</span>
+            <img src='../images/tg.svg' alt='Telegram CrazySouslik`s' className={styles.contact__img} />
+            <span>+7 (953) 518-90-08</span>
             </a>
-          </div>
-    
+          </div> 
           <div className={styles.social}>
             <a href='https://t.me/CrazySouslik' className={styles.social__item} target='_blank' rel='noopener noreferrer'>
               <img src='../images/tg.svg' alt='Telegram CrazySouslik`s' className={styles.social__img}/>
@@ -97,7 +89,6 @@ class About extends React.Component {
             </a>
           </div>         
         </header>
-
         <main className={styles.main}>
           {isLoading ? <Preloader /> : 
             <div className={styles.list_wrapper}>
@@ -121,31 +112,32 @@ class About extends React.Component {
                             {repoList.map(repo => (
                               <li key={repo.id} className={styles.itemList}>
                                 <a href={repo.html_url} target='_blank' className={styles.link} rel='noopener noreferrer'>
-                                  {repo.name}   
-                                  <div className={styles.data_wrapp}>
-                                    <div className={styles.row}>
-                                      <div className={classnames({
-                                        [styles.repo_lang_indic]:true,
-                                        [styles.lang_html]: repo.language === 'HTML',
-                                        [styles.lang_js]: repo.language === 'JavaScript'
-                                      })}></div>
-                                      <span className={styles.repo_lang}>{repo.language}</span>
-                                      <div className={classnames({
+                                  {repo.name}
+                                <div className={styles.data_wrapp}>
+                                  <div className={styles.row}>
+                                    <div className={classnames({
+                                      [styles.repo_lang_indic]:true,
+                                      [styles.lang_html]: repo.language === 'HTML',
+                                      [styles.lang_js]: repo.language === 'JavaScript'
+                                    })
+                                      }></div>
+                                    <span className={styles.repo_lang}>{repo.language}</span>
+                                    <div className={classnames({
                                         [styles.data_icon]: true,
                                         [styles.data_icon_visible]: repo.stargazers_count !== 0 })
                                       }>
                                         <img src='images/star.svg' alt='is Like' />
-                                        {repo.stargazers_count}
-                                      </div>
-                                      <div className={classnames({
-                                        [styles.data_icon]: true,
-                                        [styles.data_icon_visible]: repo.forks_count !== 0 })
-                                      }>
-                                        <img src='images/follow.svg' alt='is follow' />
-                                        {repo.forks_count}                                    
+                                        {repo.stargazers_count}                                    
+                                    </div>
+                                    <div className={classnames({
+                                      [styles.data_icon]: true,
+                                      [styles.data_icon_visible]: repo.forks_count !== 0 })
+                                    }>
+                                      <img src='images/follow.svg' alt='is follow' />
+                                      {repo.forks_count}                                    
                                     </div>
                                   </div>
-                                  <div>{getUpdate_at(repo.updated_at)} </div>
+                                  <div>{getUpdate_at(repo.updated_at)}</div>
                                 </div>
                                 </a>                                
                               </li>
@@ -169,8 +161,8 @@ export default About;
 
 function getUpdate_at(i) {
   const width = window.screen.width,
-        monthFull = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November","December"],
-        monthShort = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov","Dec"];
+        monthFull = [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November','December'],
+        monthShort = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov','Dec'];
   let month = '',
       up = 'Up ';
 
